@@ -54,13 +54,17 @@ final class MenuService
     private function generateUrls(): void
     {
         foreach ($this->menuItems as $index => $menuItem) {
-            if (empty($menuItem['path'])) {
-                $this->menuItems[$index]['url'] = '#';
-            } else {
-                $this->menuItems[$index]['url'] = $this->router->generate($menuItem['path']);
-            }
-
+            $url = empty($menuItem['path']) ? '#' : $this->router->generate($menuItem['path']);
+            $this->menuItems[$index]['url'] = $url;
             unset($this->menuItems[$index]['path']);
+
+            if ($this->hasSubtree($menuItem)) {
+                foreach ($menuItem['subtree'] as $subIndex => $subItem) {
+                    $url = empty($subItem['path']) ? '#' : $this->router->generate($subItem['path']);
+                    $this->menuItems[$index]['subtree'][$subIndex]['url'] = $url;
+                    unset($this->menuItems[$index]['subtree'][$subIndex]['path']);
+                }
+            }
         }
     }
 }

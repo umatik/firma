@@ -12,7 +12,6 @@ doctrine:
         server_version: '5.7'
         charset: utf8mb4
 
-        # With Symfony 3.3, remove the `resolve:` prefix
         url: '%env(resolve:DATABASE_URL)%'
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
@@ -22,6 +21,6 @@ doctrine:
             App:
                 is_bundle: false
                 type: annotation
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
+                dir: '%kernel.project_dir%/src/Common/Domain/Entity'
+                prefix: 'App\Common\Domain\Entity'
                 alias: App

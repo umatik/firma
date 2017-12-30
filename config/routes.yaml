@@ -1,3 +1,14 @@
 app_dashboard:
     path: /
     controller: App\Dashboard\Action\DashboardAction
+    methods: GET
+
+app_get_contractors:
+    path: /contractors/
+    controller: App\Contractors\Action\GetContractorsAction
+    methods: GET
+
+app_add_contractor:
+    path: /contractors/add
+    controller: App\Contractors\Action\AddContractorAction
+    methods: [GET, POST]
