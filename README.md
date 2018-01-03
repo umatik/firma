@@ -47,4 +47,4 @@ $ bin/console server:start
 Oraz [cała społeczność DevBay](https://github.com/devbay-pl/firma/graphs/contributors), która miała wkład w ten projekt.
 
 ___
-Projekt oparty na [licencji MIT](https://github.com/devbay-pl/firma/blob/master/LICENSE).
+Projekt na [licencji MIT](https://github.com/devbay-pl/firma/blob/master/LICENSE).
