@@ -6,7 +6,7 @@
 
 [Nasz styleguide](#nasz-styleguide)
  * [Treść commitów](#treść-commitów)
- * [PHP](#PHP)
+ * [PHP](#php)
  * [Dokumentacja](#dokumentacja)
 
 [Dodatkowe informacje](#dodatkowe-informacje)
