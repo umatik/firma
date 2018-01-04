@@ -20,6 +20,14 @@ $ git clone git@github.com:devbay-pl/firma.git
 $ cd firma
 $ composer install
 ```
+
+Aby zbudować część frontową:
+```bash
+$ npm install
+$ npm run dev
+```
+Aby npm przebudowywał na bieżąco zmiany zamiast `npm run dev` uruchom `npm run watch`.
+
 Następnie utworzyć na bazie `.env.dist` własny plik konfiguracyjny `.env`.
 W linii `DATABASE_URL=` należy podać dane dostępowe do bazy danych.
 
