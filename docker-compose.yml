@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+  app:
+    build: ./docker/images/app
+    volumes:
+      - ./:/var/www/firma
+    links:
+      - mysql
+
+  nginx:
+    build: ./docker/images/nginx
+    ports:
+      - "80:80"
+    volumes_from:
+      - app
+    links:
+      - app
+
+  mysql:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: firma
+      MYSQL_USER: firma
+      MYSQL_PASSWORD: firma
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/data/mysql:/var/lib/mysql

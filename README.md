@@ -28,16 +28,22 @@ $ npm run dev
 ```
 Aby npm przebudowywał na bieżąco zmiany zamiast `npm run dev` uruchom `npm run watch`.
 
-Następnie utworzyć na bazie `.env.dist` własny plik konfiguracyjny `.env`.
-W linii `DATABASE_URL=` należy podać dane dostępowe do bazy danych.
+Po uruchomieniu środowiska dockerowego należy utworzyć schematy w bazie danych poleceniem:
 
-Po konfiguracji `.env` należy utworzyć schematy w bazie danych poleceniem:
 ```bash
 $ bin/console doctrine:schema:update
 ```
 
 ### Uruchomienie
-Do celów deweloperskich zalecane jest użycie wbudowanego serwera www w projekt.
+Do celów deweloperskich zalecane jest użycie przygotowanego środowiska dockerowego.
+By uruchomić:
+```bash
+$ docker-compose up
+```
+
+Przy pierwszym uruchomieniu i przy każdej zmianie konfiguracji dockera dodaj parametr `--build`.
+
+Dla tych, którzy wolą wbudowany serwer www:
 
 Uruchomienie z logami w konsoli:
 ```bash
