@@ -25,7 +25,7 @@
 ### Zgłaszanie bugów
 W tej sekcji znajdziesz informacje o tym, jak zgłosić buga w projekcie. Postępowanie zgodnie z tymi zaleceniami pomoże naszej ekipie zrozumieć Twoje zgłoszenie :pencil:, odtworzyć zachowanie :computer: :computer: oraz znaleźć powiązane zgłoszenia :mag_right:.
 
-Zanim zgłosisz buga, prosimy byś zapoznał się z [tą listą](#zanim-zgłosisz-buga), ponieważ może się okazać, że wcale nie musisz tego zgłaszać. Tworząc zgłoszenie, prosimy byś umieścił [jak najwięcej szczegółów](#jak-wysłać-dobre-zgłoszenie). Uzupełnij nasz [szablon zgłoszenia](ISSUE_TEMPLATE.md), pytania pomocnicze w nim zawarte szybciej pomogą nam rozwiązać problem.
+Zanim zgłosisz buga, prosimy byś zapoznał się z [tą listą](#zanim-zgłosisz-buga), ponieważ może się okazać, że wcale nie musisz tego zgłaszać. Tworząc zgłoszenie, prosimy byś umieścił [jak najwięcej szczegółów](#jak-wysłać-dobre-zgłoszenie).
 
 > **Uwaga:** jeśli znajdziesz zamknięty problem, który wygląda na podobny, jak Twój, owtórz nowe zgłoszenie i dołącz link do tego, które jest zamknięte.
 
@@ -34,7 +34,7 @@ Zanim zgłosisz buga, prosimy byś zapoznał się z [tą listą](#zanim-zgłosis
 - Upewnij się, że jesteś na najnowszej wersji projektu
 
 #### Jak wysłać dobre zgłoszenie?
-Do obsługi błędów korzystamy z [githubowego rozwiązania](https://guides.github.com/features/issues/). Aby utworzyć zgłoszenie, uzupełnij [szablon zgłoszenia](ISSUE_TEMPLATE.md) odpowiadając na zadane pytania.
+Do obsługi błędów korzystamy z [githubowego rozwiązania](https://guides.github.com/features/issues/).
 
 Wyjaśnij problem i szczegółowo opisz o co chodzi, by nasz zespół mógł odtworzyć zaistaniały błąd.
 
@@ -48,7 +48,7 @@ Wyjaśnij problem i szczegółowo opisz o co chodzi, by nasz zespół mógł odt
 ### Proponowanie usprawnień
 W tej sekcji przedstawiamy jak proponować usprawnienia projektu, w tym zupełnie nowe funkcje i drobne ulepszenia istniejących funkcji. Przestrzeganie tych wskazówek pomaga nam zrozumieć Twoją propozycję :pencil: i znaleźć :mag_right: powiązane z nią już zgłoszone propozycje.
 
-Podczas tworzenia propozycji usprawnienia należy podać jak najwięcej szczegółów. Wypełnij [szablon](ISSUE_TEMPLATE.md) odpowiadając na zadane pytania.
+Podczas tworzenia propozycji usprawnienia należy podać jak najwięcej szczegółów.
 
 ### Pull Requesty
 - Uzupełnij wymagany szablon(@todo)
