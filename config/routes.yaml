@@ -3,7 +3,7 @@ app_dashboard:
     controller: App\Dashboard\Action\DashboardAction
     methods: GET
 
-app_get_contractors:
+app_list_contractors:
     path: /contractors/
     controller: App\Contractors\Action\GetContractorsAction
     methods: GET

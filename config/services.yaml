@@ -1,6 +1,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    locale: 'pl'
 
 services:
     _defaults:
@@ -10,15 +11,3 @@ services:
 
     App\:
         resource: '../src/*'
-        exclude: '../src/*/*/{Entity,Migrations,Tests}'
-
-    # Packages
-    App\Common\Action\:
-        resource: '../src/Common/Action'
-        tags: ['controller.service_arguments']
-
-    App\Dashboard\Action\:
-        resource: '../src/Dashboard/Action'
-        tags: ['controller.service_arguments']
-
-    # Services

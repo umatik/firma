@@ -5,17 +5,24 @@ namespace App\Contractors\Action;
 
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Service\MenuService;
+use App\Contractors\Domain\Model\ContractorModel;
 use App\Contractors\Responder\GetContractorsResponder;
 
 final class GetContractorsAction extends BaseAction
 {
     const PAGE_NAME = 'Kontrahenci';
 
-    public function __invoke(GetContractorsResponder $responder, MenuService $menuService)
-    {
+    public function __invoke(
+        GetContractorsResponder $responder,
+        MenuService $menuService,
+        ContractorModel $contractorModel
+    ) {
+        $contractors = $contractorModel->listContractors();
+
         return $responder([
             'menuService' => $menuService,
-            'pageName' => self::PAGE_NAME
+            'pageName' => self::PAGE_NAME,
+            'contractors' => $contractors
         ]);
     }
 }

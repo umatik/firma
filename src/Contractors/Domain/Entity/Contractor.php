@@ -7,14 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="contractor")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="App\Contractors\Domain\Repository\ContractorRepository")
  */
 class Contractor
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(name="id")
+     * @ORM\Column(name="id", type="integer")
      */
     private $id;
 

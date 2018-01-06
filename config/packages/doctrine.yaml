@@ -1,8 +1,4 @@
 parameters:
-    # Adds a fallback DATABASE_URL if the env var is not set.
-    # This allows you to run cache:warmup even if your
-    # environment variables are not available yet.
-    # You should not need to change this value.
     env(DATABASE_URL): ''
 
 doctrine:
@@ -18,9 +14,15 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         mappings:
-            App:
+            Common:
                 is_bundle: false
                 type: annotation
-                dir: '%kernel.project_dir%/src/Common/Domain/Entity'
-                prefix: 'App\Common\Domain\Entity'
-                alias: App
+                dir: '%kernel.project_dir%/src/Common/Domain/Entity/'
+                prefix: 'App\Common\Domain\Entity\'
+                alias: Common
+            Contractors:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Contractors/Domain/Entity/'
+                prefix: 'App\Contractors\Domain\Entity\'
+                alias: Contractors

@@ -19,7 +19,8 @@ final class GetContractorsResponder extends BaseResponder
     {
         return new Response($this->twig->render('Contractors/get_contractors.twig', [
             'menu' => $data['menuService']->render(),
-            'pageName' => $data['pageName']
+            'pageName' => $data['pageName'],
+            'contractors' => $data['contractors'],
         ]));
     }
 }
