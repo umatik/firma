@@ -17,3 +17,8 @@ app_get_contractor:
     path: /contractors/{contractorId}
     controller: App\Contractors\Action\GetContractorAction
     methods: [GET, POST]
+
+app_delete_contractor:
+    path: /contractors/delete/{contractorId}
+    controller: App\Contractors\Action\DeleteContractorAction
+    methods: GET

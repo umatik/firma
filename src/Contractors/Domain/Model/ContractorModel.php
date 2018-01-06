@@ -34,6 +34,12 @@ final class ContractorModel
         return $this->getRepository()->find($contractorId);
     }
 
+    public function deleteContractor(Contractor $contractor): void
+    {
+        $this->entityManager->remove($contractor);
+        $this->entityManager->flush();
+    }
+
     private function getRepository(): ContractorRepository
     {
         return $this->entityManager->getRepository(self::ENTITY_CLASS);
