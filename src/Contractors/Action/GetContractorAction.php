@@ -5,33 +5,38 @@ namespace App\Contractors\Action;
 
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Service\MenuService;
-use App\Contractors\Domain\Entity\Contractor;
 use App\Contractors\Domain\Form\ContractorType;
 use App\Contractors\Domain\Model\ContractorModel;
-use App\Contractors\Responder\AddContractorResponder;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use App\Contractors\Responder\GetContractorResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-final class AddContractorAction extends BaseAction
+final class GetContractorAction extends BaseAction
 {
-    const PAGE_NAME = 'Dodaj kontrahenta';
-    const SUCCESSFUL_CONTRACTOR_ADD_MESSAGE = 'Pomyślnie dodano kontrahenta.';
+    const PAGE_NAME = 'Podgląd kontrahenta';
+    const SUCCESSFUL_UPDATED_CONTRACTOR_MESSAGE = 'Pomyślnie zaktualizowano kontrahenta.';
 
     public function __invoke(
-        AddContractorResponder $responder,
+        GetContractorResponder $responder,
         MenuService $menuService,
+        ContractorModel $contractorModel,
         Request $request,
-        ContractorModel $contractorModel
+        int $contractorId
     ): Response {
-        $contractor = new Contractor();
-        $form = $this->createForm(ContractorType::class, $contractor);
+        $contractor = $contractorModel->getContractor($contractorId);
 
+        if (empty($contractor)) {
+            throw new NotFoundHttpException();
+        }
+
+        $form = $this->createForm(ContractorType::class, $contractor);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $contractorModel->saveContractor($contractor);
 
-            $this->addFlash('info', self::SUCCESSFUL_CONTRACTOR_ADD_MESSAGE);
+            $this->addFlash('info', self::SUCCESSFUL_UPDATED_CONTRACTOR_MESSAGE);
 
             return $this->redirectToRoute('app_get_contractor', [
                 'contractorId' => $contractor->getId()

@@ -23,10 +23,15 @@ final class ContractorModel
         return $this->getRepository()->findAll();
     }
 
-    public function save(Contractor $contractor): void
+    public function saveContractor(Contractor $contractor): void
     {
         $this->entityManager->persist($contractor);
         $this->entityManager->flush();
+    }
+
+    public function getContractor(int $contractorId): ?Contractor
+    {
+        return $this->getRepository()->find($contractorId);
     }
 
     private function getRepository(): ContractorRepository

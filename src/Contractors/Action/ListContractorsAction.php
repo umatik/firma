@@ -6,14 +6,14 @@ namespace App\Contractors\Action;
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Service\MenuService;
 use App\Contractors\Domain\Model\ContractorModel;
-use App\Contractors\Responder\GetContractorsResponder;
+use App\Contractors\Responder\ListContractorsResponder;
 
-final class GetContractorsAction extends BaseAction
+final class ListContractorsAction extends BaseAction
 {
     const PAGE_NAME = 'Kontrahenci';
 
     public function __invoke(
-        GetContractorsResponder $responder,
+        ListContractorsResponder $responder,
         MenuService $menuService,
         ContractorModel $contractorModel
     ) {

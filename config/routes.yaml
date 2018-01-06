@@ -5,10 +5,15 @@ app_dashboard:
 
 app_list_contractors:
     path: /contractors/
-    controller: App\Contractors\Action\GetContractorsAction
+    controller: App\Contractors\Action\ListContractorsAction
     methods: GET
 
 app_add_contractor:
     path: /contractors/add
     controller: App\Contractors\Action\AddContractorAction
+    methods: [GET, POST]
+
+app_get_contractor:
+    path: /contractors/{contractorId}
+    controller: App\Contractors\Action\GetContractorAction
     methods: [GET, POST]
