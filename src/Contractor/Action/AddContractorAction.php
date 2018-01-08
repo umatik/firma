@@ -32,7 +32,7 @@ final class AddContractorAction extends BaseAction
 
             $this->addFlash('info', self::SUCCESSFUL_CONTRACTOR_ADD_MESSAGE);
 
-            return $this->redirectToRoute('app_get_contractor', [
+            return $this->redirectToRoute('app_contractor_get', [
                 'contractorId' => $contractor->getId()
             ]);
         }

@@ -24,6 +24,6 @@ final class DeleteContractorAction extends BaseAction
 
         $this->addFlash('info', sprintf(self::SUCCESSFUL_REMOVED_CONTRACTOR, $contractor->getName()));
 
-        return $this->redirectToRoute('app_list_contractors');
+        return $this->redirectToRoute('app_contractor_list');
     }
 }
