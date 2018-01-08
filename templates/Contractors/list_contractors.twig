@@ -53,7 +53,7 @@
                                         <td>{{ contractor.city }}</td>
                                         <td>{{ contractor.phoneNumber }}</td>
                                         <td>{{ contractor.email }}</td>
-                                        <td>{{ contractor.discount }}</td>
+                                        <td>{{ contractor.discount|number_format(2) }}%</td>
                                         <td>
                                             <a href="{{ path('app_get_contractor', {contractorId: contractor.id}) }}" data-toggle="tooltip" title="Podgląd i edycja"><i class="fa fa-search"></i></a>
                                             <a href="{{ path('app_delete_contractor', {contractorId: contractor.id}) }}" data-toggle="tooltip" title="Usuń"><i class="fa fa-remove text-danger"></i></a>

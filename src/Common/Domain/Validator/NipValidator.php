@@ -12,9 +12,11 @@ final class NipValidator extends ConstraintValidator
 
     public function validate($value, Constraint $constraint)
     {
-        $stringValue = (string) $value;
+        if (empty($value)) {
+            return;
+        }
 
-        $nip = preg_replace('/[ -]/im', '', $stringValue);
+        $nip = preg_replace('/[ -]/im', '', $value);
         $length = strlen($nip);
 
         if ($length !== self::NIP_LENGTH) {
