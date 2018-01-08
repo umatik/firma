@@ -19,6 +19,14 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
+                            {% for message in app.flashes('info') %}
+                                <div class="alert alert-success alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <h4><i class="icon fa fa-check"></i> Sukces!</h4>
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+
                             <table class="table table-hover">
                                 <tbody>
                                 <tr>
@@ -32,24 +40,30 @@
                                     <th>Telefon</th>
                                     <th>Email</th>
                                     <th>Rabat</th>
+                                    <th>&nbsp;</th>
                                 </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>John Doe</td>
-                                    <td>123-123-12-34</td>
-                                    <td>412412424</td>
-                                    <td>Zamockowana 5</td>
-                                    <td>00-000</td>
-                                    <td>Mockowo</td>
-                                    <td>+48 123 456 789</td>
-                                    <td>hello@nowacki.it</td>
-                                    <td>0,00%</td>
-                                </tr>
+                                {% for contractor in contractors %}
+                                    <tr>
+                                        <td>{{ contractor.id }}</td>
+                                        <td>{{ contractor.name }}</td>
+                                        <td>{{ contractor.nip }}</td>
+                                        <td>{{ contractor.regon }}</td>
+                                        <td>{{ contractor.address }}</td>
+                                        <td>{{ contractor.postalCode }}</td>
+                                        <td>{{ contractor.city }}</td>
+                                        <td>{{ contractor.phoneNumber }}</td>
+                                        <td>{{ contractor.email }}</td>
+                                        <td>{{ contractor.discount|number_format(2) }}%</td>
+                                        <td>
+                                            <a href="{{ path('app_get_contractor', {contractorId: contractor.id}) }}" data-toggle="tooltip" title="Podgląd i edycja"><i class="fa fa-search"></i></a>
+                                            <a href="{{ path('app_delete_contractor', {contractorId: contractor.id}) }}" data-toggle="tooltip" title="Usuń"><i class="fa fa-remove text-danger"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="box-footer clearfix">

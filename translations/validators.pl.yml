@@ -1,0 +1,4 @@
+invalid:
+  nip_number: Podany NIP jest nieprawidłowy.
+  regon_number: Podany REGON jest nieprawidłowy.
+  postal_code: 'Kod pocztowy jest nieprawidłowy, porządany format: XX-XXX'
