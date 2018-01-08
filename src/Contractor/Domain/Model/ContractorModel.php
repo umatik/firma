@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace App\Contractors\Domain\Model;
+namespace App\Contractor\Domain\Model;
 
-use App\Contractors\Domain\Entity\Contractor;
-use App\Contractors\Domain\Repository\ContractorRepository;
+use App\Contractor\Domain\Entity\Contractor;
+use App\Contractor\Domain\Repository\ContractorRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 final class ContractorModel

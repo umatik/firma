@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace App\Contractors\Domain\Repository;
+namespace App\Contractor\Domain\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

@@ -1,12 +1,12 @@
 <?php
 declare(strict_types = 1);
 
-namespace App\Contractors\Action;
+namespace App\Contractor\Action;
 
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Service\MenuService;
-use App\Contractors\Domain\Model\ContractorModel;
-use App\Contractors\Responder\ListContractorsResponder;
+use App\Contractor\Domain\Model\ContractorModel;
+use App\Contractor\Responder\ListContractorsResponder;
 
 final class ListContractorsAction extends BaseAction
 {

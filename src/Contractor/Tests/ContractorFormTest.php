@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace App\Contractors\Tests;
+namespace App\Contractor\Tests;
 
-use App\Contractors\Domain\Entity\Contractor;
-use App\Contractors\Domain\Form\ContractorType;
+use App\Contractor\Domain\Entity\Contractor;
+use App\Contractor\Domain\Form\ContractorType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Test\TypeTestCase;

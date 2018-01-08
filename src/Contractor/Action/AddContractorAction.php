@@ -1,15 +1,14 @@
 <?php
 declare(strict_types = 1);
 
-namespace App\Contractors\Action;
+namespace App\Contractor\Action;
 
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Service\MenuService;
-use App\Contractors\Domain\Entity\Contractor;
-use App\Contractors\Domain\Form\ContractorType;
-use App\Contractors\Domain\Model\ContractorModel;
-use App\Contractors\Responder\AddContractorResponder;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use App\Contractor\Domain\Entity\Contractor;
+use App\Contractor\Domain\Form\ContractorType;
+use App\Contractor\Domain\Model\ContractorModel;
+use App\Contractor\Responder\AddContractorResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

@@ -1,12 +1,12 @@
 <?php
 declare(strict_types = 1);
 
-namespace App\Contractors\Domain\Form;
+namespace App\Contractor\Domain\Form;
 
 use App\Common\Domain\Validator\Nip;
 use App\Common\Domain\Validator\PostalCode;
 use App\Common\Domain\Validator\Regon;
-use App\Contractors\Domain\Entity\Contractor;
+use App\Contractor\Domain\Entity\Contractor;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;

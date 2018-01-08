@@ -1,13 +1,13 @@
 <?php
 declare(strict_types = 1);
 
-namespace App\Contractors\Domain\Entity;
+namespace App\Contractor\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="contractor")
- * @ORM\Entity(repositoryClass="App\Contractors\Domain\Repository\ContractorRepository")
+ * @ORM\Entity(repositoryClass="App\Contractor\Domain\Repository\ContractorRepository")
  */
 class Contractor
 {

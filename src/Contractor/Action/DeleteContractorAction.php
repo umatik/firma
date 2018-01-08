@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace App\Contractors\Action;
+namespace App\Contractor\Action;
 
 use App\Common\Action\BaseAction;
-use App\Contractors\Domain\Model\ContractorModel;
+use App\Contractor\Domain\Model\ContractorModel;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
