@@ -14,7 +14,7 @@ final class SitemapService
         ],
         [
             'name' => 'Kontrahenci',
-            'path' => 'app_list_contractors',
+            'path' => 'app_contractor_list',
             'icon' => 'fa-group',
             'subtree' => [],
         ],

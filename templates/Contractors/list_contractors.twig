@@ -8,7 +8,7 @@
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header">
-                    <a href="{{ path('app_add_contractor') }}" class="btn btn-success btn-sm pull-right">Dodaj nowego kontrahenta</a>
+                    <a href="{{ path('app_contractor_add') }}" class="btn btn-success btn-sm pull-right">Dodaj nowego kontrahenta</a>
                 </div>
 
                 <div class="box-body table-responsive">
@@ -55,8 +55,8 @@
                                         <td>{{ contractor.email }}</td>
                                         <td>{{ contractor.discount|number_format(2) }}%</td>
                                         <td>
-                                            <a href="{{ path('app_get_contractor', {contractorId: contractor.id}) }}" data-toggle="tooltip" title="Podgląd i edycja"><i class="fa fa-search"></i></a>
-                                            <a href="{{ path('app_delete_contractor', {contractorId: contractor.id}) }}" data-toggle="tooltip" title="Usuń"><i class="fa fa-remove text-danger"></i></a>
+                                            <a href="{{ path('app_contractor_get', {contractorId: contractor.id}) }}" data-toggle="tooltip" title="Podgląd i edycja"><i class="fa fa-search"></i></a>
+                                            <a href="{{ path('app_contractor_delete', {contractorId: contractor.id}) }}" data-toggle="tooltip" title="Usuń"><i class="fa fa-remove text-danger"></i></a>
                                         </td>
                                     </tr>
                                 {% endfor %}

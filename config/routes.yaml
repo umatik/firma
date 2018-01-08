@@ -3,24 +3,24 @@ app_dashboard:
     controller: App\Dashboard\Action\DashboardAction
     methods: GET
 
-app_list_contractors:
+app_contractor_list:
     path: /contractors/
-    controller: App\Contractors\Action\ListContractorsAction
+    controller: App\Contractor\Action\ListContractorsAction
     methods: GET
 
-app_add_contractor:
+app_contractor_add:
     path: /contractors/add
-    controller: App\Contractors\Action\AddContractorAction
+    controller: App\Contractor\Action\AddContractorAction
     methods: [GET, POST]
 
-app_get_contractor:
+app_contractor_get:
     path: /contractors/{contractorId}
-    controller: App\Contractors\Action\GetContractorAction
+    controller: App\Contractor\Action\GetContractorAction
     methods: [GET, POST]
 
-app_delete_contractor:
+app_contractor_delete:
     path: /contractors/delete/{contractorId}
-    controller: App\Contractors\Action\DeleteContractorAction
+    controller: App\Contractor\Action\DeleteContractorAction
     methods: GET
 
 app_product_list:

@@ -38,7 +38,7 @@ final class GetContractorAction extends BaseAction
 
             $this->addFlash('info', self::SUCCESSFUL_UPDATED_CONTRACTOR_MESSAGE);
 
-            return $this->redirectToRoute('app_get_contractor', [
+            return $this->redirectToRoute('app_contractor_get', [
                 'contractorId' => $contractor->getId()
             ]);
         }
