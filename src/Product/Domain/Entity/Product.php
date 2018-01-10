@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="App\Product\Domain\Repository\ProductRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Product
 {
@@ -64,10 +65,30 @@ class Product
      */
     private $vatRate;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $updatedAt;
+
     public function __construct()
     {
+        $this->createdAt= new \DateTime();
+        $this->updatedAt= new \DateTime();
         $this->amountDiscount = 0;
         $this->percentageDiscount = 0;
+    }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt= new \DateTime();
     }
 
     public function getId(): ?int
@@ -170,5 +191,15 @@ class Product
     public function setVatRate(float $vatRate): void
     {
         $this->vatRate = $vatRate;
+    }
+
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
     }
 }
