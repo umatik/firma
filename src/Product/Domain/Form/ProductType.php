@@ -12,7 +12,9 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Range;
 
 final class ProductType extends AbstractType
 {
@@ -22,7 +24,10 @@ final class ProductType extends AbstractType
             'label' => 'form.name',
             'translation_domain' => 'products',
             'constraints' => [
-                new NotBlank()
+                new NotBlank(),
+                new Length([
+                    'max' => 255
+                ])
             ]
         ]);
 
@@ -30,47 +35,87 @@ final class ProductType extends AbstractType
             'label' => 'form.unit',
             'translation_domain' => 'products',
             'constraints' => [
-                new NotBlank()
+                new NotBlank(),
+                new Length([
+                    'max' => 32
+                ])
             ]
         ]);
 
         $builder->add('pkwiu', TextType::class, [
             'label' => 'form.pkwiu',
             'translation_domain' => 'products',
-            'required' => false
+            'required' => false,
+            'constraints' => [
+                new Length([
+                    'max' => 10
+                ])
+            ]
         ]);
 
         $builder->add('amountDiscount', IntegerType::class, [
             'label' => 'form.amountDiscount',
             'translation_domain' => 'products',
+            'constraints' => [
+                new Range([
+                    'min' => 0,
+                ])
+            ]
         ]);
 
         $builder->add('percentageDiscount', IntegerType::class, [
             'label' => 'form.percentageDiscount',
             'translation_domain' => 'products',
+            'constraints' => [
+                new Range([
+                    'min' => 0,
+                    'max' => 100
+                ])
+            ]
         ]);
 
         $builder->add('price', IntegerType::class, [
             'label' => 'form.price',
             'translation_domain' => 'products',
+            'constraints' => [
+                new Range([
+                    'min' => 0,
+                ])
+            ]
         ]);
 
         $builder->add('priceType', ChoiceType::class, [
             'label' => 'form.priceType',
             'translation_domain' => 'products',
             'choices' => array_flip(Price::PRICE_TYPE),
-            'expanded' => true
+            'expanded' => true,
+            'constraints' => [
+                new Length([
+                    'max' => 1
+                ])
+            ]
         ]);
 
         $builder->add('wholesalePrice', IntegerType::class, [
             'label' => 'form.wholesalePrice',
             'translation_domain' => 'products',
-            'required' => false
+            'required' => false,
+            'constraints' => [
+                new Range([
+                    'min' => 0,
+                ])
+            ]
         ]);
 
         $builder->add('vatRate', IntegerType::class, [
             'label' => 'form.vatRate',
             'translation_domain' => 'products',
+            'constraints' => [
+                new Range([
+                    'min' => 0,
+                    'max' => 100
+                ])
+            ]
         ]);
 
         $builder->add('submit', SubmitType::class, [
