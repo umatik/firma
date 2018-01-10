@@ -27,3 +27,8 @@ app_product_list:
     path: /products/
     controller: App\Product\Action\ListProductsAction
     methods: GET
+
+app_product_add:
+    path: /products/add
+    controller: App\Product\Action\AddProductAction
+    methods: [GET, POST]
