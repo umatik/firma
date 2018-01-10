@@ -18,6 +18,17 @@ final class ProductModel
         $this->entityManager = $entityManager;
     }
 
+    public function getProduct(int $productId): ?Product
+    {
+        return $this->getRepository()->find($productId);
+    }
+
+    public function saveProduct(Product $product): void
+    {
+        $this->entityManager->persist($product);
+        $this->entityManager->flush();
+    }
+
     public function listProducts(): array
     {
         return $this->getRepository()->findAll();

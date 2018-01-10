@@ -32,3 +32,8 @@ app_product_add:
     path: /products/add
     controller: App\Product\Action\AddProductAction
     methods: [GET, POST]
+
+app_product_get:
+    path: /products/{productId}
+    controller: App\Product\Action\GetProductAction
+    methods: [GET, POST]

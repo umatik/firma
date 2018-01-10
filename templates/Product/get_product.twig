@@ -1,0 +1,26 @@
+{% extends 'Common/template.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block page_name %}{{ pageName }}{% endblock %}
+{% block page_description %}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-success">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ form_start(form) }}
+
+                            {{ form_widget(form) }}
+
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

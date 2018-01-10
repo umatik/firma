@@ -51,11 +51,11 @@
                                         <td>{{ product.amountDiscount|number_format(2) }} zł</td>
                                         <td>{{ product.percentageDiscount|number_format(2) }}%</td>
                                         <td>{{ product.price|number_format(2) }} zł</td>
-                                        {#<td>{{ product.priceType.name }}</td>#}
+                                        <td>{{ product.priceType }}</td>
                                         <td>{{ product.wholesalePrice|number_format(2) }} zł</td>
                                         <td>{{ product.vatRate|number_format(0) }}%</td>
                                         <td>
-                                            <a href="#" data-toggle="tooltip" title="Podgląd i edycja"><i class="fa fa-search"></i></a>
+                                            <a href="{{ path('app_product_get', {productId: product.id}) }}" data-toggle="tooltip" title="Podgląd i edycja"><i class="fa fa-search"></i></a>
                                             <a href="#" data-toggle="tooltip" title="Usuń"><i class="fa fa-remove text-danger"></i></a>
                                         </td>
                                     </tr>
