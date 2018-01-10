@@ -8,13 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class DashboardResponder extends BaseResponder
 {
-    private $twig;
-
-    public function __construct(\Twig_Environment $twig)
-    {
-        $this->twig = $twig;
-    }
-
     public function __invoke(array $data = []): Response
     {
         return new Response($this->twig->render('Dashboard/dashboard.twig', [
