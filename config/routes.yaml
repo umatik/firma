@@ -37,3 +37,8 @@ app_product_get:
     path: /products/{productId}
     controller: App\Product\Action\GetProductAction
     methods: [GET, POST]
+
+app_product_delete:
+    path: /products/delete/{productId}
+    controller: App\Product\Action\DeleteProductAction
+    methods: GET

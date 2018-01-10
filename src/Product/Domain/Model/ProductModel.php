@@ -29,6 +29,12 @@ final class ProductModel
         $this->entityManager->flush();
     }
 
+    public function deleteProduct(Product $product): void
+    {
+        $this->entityManager->remove($product);
+        $this->entityManager->flush();
+    }
+
     public function listProducts(): array
     {
         return $this->getRepository()->findAll();
