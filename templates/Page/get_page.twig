@@ -1,0 +1,20 @@
+{% extends 'Common/template.twig' %}
+
+{% block page_name %}{{ pageName }}{% endblock %}
+{% block page_description %}{{ page.createdAt|date('d.m.Y, H:i:s') }}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-success">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ page.content }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
