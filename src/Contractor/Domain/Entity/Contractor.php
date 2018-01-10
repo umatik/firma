@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Table(name="contractor")
  * @ORM\Entity(repositoryClass="App\Contractor\Domain\Repository\ContractorRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Contractor
 {
@@ -63,9 +64,29 @@ class Contractor
      */
     private $discount;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $updatedAt;
+
     public function __construct()
     {
+        $this->createdAt= new \DateTime();
+        $this->updatedAt= new \DateTime();
         $this->discount = 0.00;
+    }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt= new \DateTime();
     }
 
     public function getId(): ?int
@@ -161,5 +182,15 @@ class Contractor
     public function setDiscount(float $discount): void
     {
         $this->discount = $discount;
+    }
+
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
     }
 }
