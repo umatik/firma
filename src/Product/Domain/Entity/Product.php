@@ -140,6 +140,13 @@ class Product
         return $this->priceType;
     }
 
+    public function getPriceTypeText(): ?string
+    {
+        if (isset(Price::PRICE_TYPE[$this->priceType])) {
+            return Price::PRICE_TYPE[$this->priceType];
+        }
+    }
+
     public function setPriceType(int $priceType): void
     {
         $this->priceType = $priceType;
