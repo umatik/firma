@@ -22,3 +22,23 @@ app_contractor_delete:
     path: /contractors/delete/{contractorId}
     controller: App\Contractor\Action\DeleteContractorAction
     methods: GET
+
+app_product_list:
+    path: /products/
+    controller: App\Product\Action\ListProductsAction
+    methods: GET
+
+app_product_add:
+    path: /products/add
+    controller: App\Product\Action\AddProductAction
+    methods: [GET, POST]
+
+app_product_get:
+    path: /products/{productId}
+    controller: App\Product\Action\GetProductAction
+    methods: [GET, POST]
+
+app_product_delete:
+    path: /products/delete/{productId}
+    controller: App\Product\Action\DeleteProductAction
+    methods: GET

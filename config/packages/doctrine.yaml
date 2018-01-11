@@ -26,3 +26,10 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Contractor/Domain/Entity/'
                 prefix: 'App\Contractor\Domain\Entity\'
                 alias: Contractors
+
+            Products:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Product/Domain/Entity/'
+                prefix: 'App\Product\Domain\Entity\'
+                alias: Products

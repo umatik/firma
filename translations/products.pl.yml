@@ -1,0 +1,13 @@
+form:
+  name: Nazwa produktu
+  unit: Jednostka miary
+  pkwiu: PKWiU
+  amountDiscount: Rabat kwotowy
+  percentageDiscount: Rabat procentowy
+  price: Cena
+  priceType: Typ ceny
+  wholesalePrice: Cena hurtowa
+  vatRate: Stawka VAT
+  submit: Zapisz
+netto: Netto
+brutto: Brutto

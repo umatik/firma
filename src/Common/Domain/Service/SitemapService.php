@@ -20,7 +20,7 @@ final class SitemapService
         ],
         [
             'name' => 'Produkty',
-            'path' => '',
+            'path' => 'app_product_list',
             'icon' => 'fa-briefcase',
             'subtree' => [],
         ],
