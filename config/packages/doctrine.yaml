@@ -33,10 +33,3 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Product/Domain/Entity/'
                 prefix: 'App\Product\Domain\Entity\'
                 alias: Products
-
-            Pages:
-                is_bundle: false
-                type: annotation
-                dir: '%kernel.project_dir%/src/Page/Domain/Entity/'
-                prefix: 'App\Page\Domain\Entity\'
-                alias: Pages

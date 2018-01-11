@@ -42,8 +42,3 @@ app_product_delete:
     path: /products/delete/{productId}
     controller: App\Product\Action\DeleteProductAction
     methods: GET
-
-app_page_get:
-    path: /static/{pageSlug}
-    controller: App\Page\Action\GetPageAction
-    methods: GET
