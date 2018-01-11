@@ -42,3 +42,8 @@ app_product_delete:
     path: /products/delete/{productId}
     controller: App\Product\Action\DeleteProductAction
     methods: GET
+
+app_invoice_list:
+    path: /invoices/
+    controller: App\Invoice\Action\ListInvoicesAction
+    methods: GET
