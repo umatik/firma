@@ -30,7 +30,7 @@ class Invoice
     private $clientType;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Invoice\Domain\Entity\Client")
+     * @ORM\OneToOne(targetEntity="App\Invoice\Domain\Entity\Client")
      * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
      */
     private $client;
