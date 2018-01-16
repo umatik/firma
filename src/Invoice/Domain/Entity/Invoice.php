@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Invoice
 {
+    const ID_CLIENT_TYPE = 1;
+    const ID_CONTRACTOR_TYPE = 2;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="AUTO")
