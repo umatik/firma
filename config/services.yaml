@@ -11,3 +11,9 @@ services:
 
     App\:
         resource: '../src/*'
+
+    App\Contractor\Domain\Repository\ContractorRepository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments:
+            - App\Contractor\Domain\Entity\Contractor

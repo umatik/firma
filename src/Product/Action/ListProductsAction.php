@@ -5,6 +5,7 @@ namespace App\Product\Action;
 
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Service\MenuService;
+use App\Product\Domain\Model\ProductFactory;
 use App\Product\Domain\Model\ProductModel;
 use App\Product\Responder\ListProductsResponder;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,9 +17,9 @@ final class ListProductsAction extends BaseAction
     public function __invoke(
         ListProductsResponder $responder,
         MenuService $menuService,
-        ProductModel $productModel
+        ProductFactory $productFactory
     ): Response {
-        $products = $productModel->listProducts();
+        $products = $productFactory->create()->list();
 
         return $responder([
             'menuService' => $menuService,

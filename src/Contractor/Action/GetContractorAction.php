@@ -4,9 +4,10 @@ declare(strict_types = 1);
 namespace App\Contractor\Action;
 
 use App\Common\Action\BaseAction;
+use App\Common\Domain\Exception\NotFoundException;
 use App\Common\Domain\Service\MenuService;
 use App\Contractor\Domain\Form\ContractorType;
-use App\Contractor\Domain\Model\ContractorModel;
+use App\Contractor\Domain\Model\ContractorFactory;
 use App\Contractor\Responder\GetContractorResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,13 +21,15 @@ final class GetContractorAction extends BaseAction
     public function __invoke(
         GetContractorResponder $responder,
         MenuService $menuService,
-        ContractorModel $contractorModel,
+        ContractorFactory $contractorFactory,
         Request $request,
         int $contractorId
     ): Response {
-        $contractor = $contractorModel->getContractor($contractorId);
+        $contractorModel = $contractorFactory->create();
 
-        if (empty($contractor)) {
+        try {
+            $contractor = $contractorModel->getById($contractorId);
+        } catch (NotFoundException $e) {
             throw new NotFoundHttpException();
         }
 
@@ -34,7 +37,7 @@ final class GetContractorAction extends BaseAction
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $contractorModel->saveContractor($contractor);
+            $contractorModel->save($contractor);
 
             $this->addFlash('info', self::SUCCESSFUL_UPDATED_CONTRACTOR_MESSAGE);
 

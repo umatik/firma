@@ -5,7 +5,7 @@ namespace App\Contractor\Action;
 
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Service\MenuService;
-use App\Contractor\Domain\Model\ContractorModel;
+use App\Contractor\Domain\Model\ContractorFactory;
 use App\Contractor\Responder\ListContractorsResponder;
 
 final class ListContractorsAction extends BaseAction
@@ -15,9 +15,9 @@ final class ListContractorsAction extends BaseAction
     public function __invoke(
         ListContractorsResponder $responder,
         MenuService $menuService,
-        ContractorModel $contractorModel
+        ContractorFactory $contractorFactory
     ) {
-        $contractors = $contractorModel->listContractors();
+        $contractors = $contractorFactory->create()->list();
 
         return $responder([
             'menuService' => $menuService,
