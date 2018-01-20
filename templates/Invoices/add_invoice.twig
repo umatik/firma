@@ -296,8 +296,96 @@
                         <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Pokaż/ukryj"><i class="fa fa-minus"></i></button>
                     </div>
                 </div>
-                <div class="box-body">
-                    asdasd
+                <div class="box-body table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Nazwa towaru lub usługi</th>
+                                <th>J.m.</th>
+                                <th>PKWiU</th>
+                                <th>Ilość</th>
+                                <th>Cena</th>
+                                <th style="width: 90px;">Typ ceny</th>
+                                <th>Rabat kwotowy</th>
+                                <th>Rabat procentowy</th>
+                                <th>Wartość netto</th>
+                                <th>Stawka VAT</th>
+                                <th>Kwota VAT</th>
+                                <th>Wartość brutto</th>
+                                <th> </th>
+                            </tr>
+                            <tr>
+                                <td>Testowa usługa</td>
+                                <td>godz.</td>
+                                <td></td>
+                                <td>180</td>
+                                <td>90,00 zł</td>
+                                <td>Netto</td>
+                                <td>0,00 zł</td>
+                                <td>0.00%</td>
+                                <td>16200,00 zł</td>
+                                <td>23%</td>
+                                <td>3726,00 zł</td>
+                                <td>19926,00 zł</td>
+                                <td>
+                                    <span class="label label-danger">usuń</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Nazwa towaru lub usługi">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="J.m.">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="PKWiU">
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" placeholder="Ilość">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Cena">
+                                </td>
+                                <td>
+                                    <select class="form-control">
+                                        <option>Netto</option>
+                                        <option>Brutto</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" class="form-control" placeholder="Rabat kwotowy"></td>
+                                <td><input type="text" class="form-control" placeholder="Rabat procentowy"></td>
+                                <td><input type="text" class="form-control" placeholder="Wartość netto"></td>
+                                <td><input type="text" class="form-control" placeholder="Stawka VAT"></td>
+                                <td><input type="text" class="form-control" placeholder="Kwota VAT"></td>
+                                <td><input type="text" class="form-control" placeholder="Wartość Brutto"></td>
+                                <td>
+                                    <span class="label label-success">zapisz</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <span class="label label-success">dodaj</span>
+                    <p class="pull-right">
+                        Wartość VAT: <span class="text-blue">3726,00 zł</span>
+                        Wartość Netto: <span class="text-blue">16200,00 zł</span>
+                        Wartość Brutto: <span class="text-blue">19926,00 zł</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-left">
+                <button type="button" class="btn btn-default">Podgląd wydruku</button>
+            </div>
+            <div class="pull-right">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-success">Zapisz</button>
+                    <button type="button" class="btn btn-default">Zapisz i wydrukuj</button>
+                    <button type="button" class="btn btn-default">Anuluj</button>
                 </div>
             </div>
         </div>
