@@ -10,7 +10,7 @@ final class AddInvoiceResponder extends BaseResponder
 {
     public function __invoke(array $data = []): Response
     {
-        return new Response($this->twig->render('Invoices/add_invoice.twig', [
+        return new Response($this->twig->render('Invoice/add_invoice.twig', [
             'menu' => $data['menuService']->render(),
             'pageName' => $data['pageName'],
         ]));

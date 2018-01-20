@@ -89,11 +89,8 @@
                             <div class="tab-pane active" id="contractor">
                                 <div class="form-group">
                                     <label>Wyszukaj kontrahenta</label>
-                                    <select class="form-control" style="width: 100%;">
-                                        <option>Kontrahent 1</option>
-                                        <option>Kontrahent 2</option>
-                                        <option>Kontrahent 3</option>
-                                        <option>Kontrahent 4</option>
+                                    <select class="form-control" style="width: 100%;" name="contractors">
+                                        <option></option>
                                     </select>
                                 </div>
 
@@ -390,4 +387,21 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var contractors = [];
+
+        $.ajax({
+            url: '/ajax/contractor/list',
+            method: 'GET',
+            success: function (response) {
+                contractors = response.data.contractors;
+                $.each(contractors, function () {
+                    $('select[name="contractors"]').append('<option value="'+ this.id +'">'+ this.name +'</option>');
+                })
+            }
+        });
+    </script>
 {% endblock %}
