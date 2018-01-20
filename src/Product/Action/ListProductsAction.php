@@ -6,7 +6,6 @@ namespace App\Product\Action;
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Service\MenuService;
 use App\Product\Domain\Model\ProductFactory;
-use App\Product\Domain\Model\ProductModel;
 use App\Product\Responder\ListProductsResponder;
 use Symfony\Component\HttpFoundation\Response;
 
