@@ -8,7 +8,6 @@ use App\Common\Domain\Service\MenuService;
 use App\Contractor\Domain\Entity\Contractor;
 use App\Contractor\Domain\Form\ContractorType;
 use App\Contractor\Domain\Model\ContractorFactory;
-use App\Contractor\Domain\Model\ContractorModel;
 use App\Contractor\Responder\AddContractorResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
