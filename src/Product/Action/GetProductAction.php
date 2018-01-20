@@ -4,9 +4,10 @@ declare(strict_types = 1);
 namespace App\Product\Action;
 
 use App\Common\Action\BaseAction;
+use App\Common\Domain\Exception\NotFoundException;
 use App\Common\Domain\Service\MenuService;
 use App\Product\Domain\Form\ProductType;
-use App\Product\Domain\Model\ProductModel;
+use App\Product\Domain\Model\ProductFactory;
 use App\Product\Responder\GetProductResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,19 +22,20 @@ final class GetProductAction extends BaseAction
         int $productId,
         MenuService $menuService,
         Request $request,
-        ProductModel $productModel
+        ProductFactory $productFactory
     ): Response {
-        $product = $productModel->getProduct($productId);
-
-        if (empty($product)) {
+        $productModel = $productFactory->create();
+        try {
+            $product = $productModel->getById($productId);
+        } catch (NotFoundException $e) {
             throw new NotFoundHttpException();
         }
 
         $form = $this->createForm(ProductType::class, $product);
 
         $form->handleRequest($request);
-        if ( $form->isSubmitted() && $form->isValid()) {
-            $productModel->saveProduct($product);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $productModel->save($product);
         }
 
         return $responder([

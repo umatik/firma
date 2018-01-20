@@ -7,7 +7,7 @@ use App\Common\Action\BaseAction;
 use App\Common\Domain\Service\MenuService;
 use App\Product\Domain\Entity\Product;
 use App\Product\Domain\Form\ProductType;
-use App\Product\Domain\Model\ProductModel;
+use App\Product\Domain\Model\ProductFactory;
 use App\Product\Responder\AddProductResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,14 +20,16 @@ final class AddProductAction extends BaseAction
         AddProductResponder $responder,
         MenuService $menuService,
         Request $request,
-        ProductModel $productModel
+        ProductFactory $productFactory
     ): Response {
+        $productModel = $productFactory->create();
+
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
 
         $form->handleRequest($request);
         if ( $form->isSubmitted() && $form->isValid()) {
-            $productModel->saveProduct($product);
+            $productModel->save($product);
 
             return $this->redirectToRoute('app_product_get', [
                 'productId' => $product->getId()
