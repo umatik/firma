@@ -7,6 +7,7 @@ use App\Common\Action\BaseAction;
 use App\Common\Domain\Service\MenuService;
 use App\Contractor\Domain\Entity\Contractor;
 use App\Contractor\Domain\Form\ContractorType;
+use App\Contractor\Domain\Model\ContractorFactory;
 use App\Contractor\Domain\Model\ContractorModel;
 use App\Contractor\Responder\AddContractorResponder;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,14 +22,14 @@ final class AddContractorAction extends BaseAction
         AddContractorResponder $responder,
         MenuService $menuService,
         Request $request,
-        ContractorModel $contractorModel
+        ContractorFactory $contractorFactory
     ): Response {
         $contractor = new Contractor();
         $form = $this->createForm(ContractorType::class, $contractor);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $contractorModel->saveContractor($contractor);
+            $contractorFactory->create()->save($contractor);
 
             $this->addFlash('info', self::SUCCESSFUL_CONTRACTOR_ADD_MESSAGE);
 
