@@ -23,3 +23,9 @@ services:
         factory: ["@doctrine.orm.entity_manager", getRepository]
         arguments:
             - App\Product\Domain\Entity\Product
+
+    App\Settings\Domain\Repository\SettingRepository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments:
+            - App\Settings\Domain\Entity\Setting

@@ -42,3 +42,8 @@ app_product_delete:
     path: /products/delete/{productId}
     controller: App\Product\Action\DeleteProductAction
     methods: GET
+
+app_settings_company_details:
+    path: /settings/company-details
+    controller: App\Settings\Action\CompanyDetailsAction
+    methods: [GET, POST]
