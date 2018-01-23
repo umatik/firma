@@ -16,7 +16,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 final class GetProductAction extends BaseAction
 {
-    const PAGE_NAME = 'Produkt';
+    const PAGE_NAME = 'Produkty';
 
     public function __invoke(
         GetProductResponder $responder,
@@ -27,7 +27,7 @@ final class GetProductAction extends BaseAction
         SitemapService $sitemapService
     ): Response {
         $productModel = $productFactory->create();
-        $siteMap = $sitemapService->getPagemap(2);
+        $siteMap = $sitemapService->getPagemap(self::PAGE_NAME);
 
         try {
             $product = $productModel->getById($productId);

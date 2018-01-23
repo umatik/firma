@@ -1,7 +1,16 @@
 {% extends 'Common/template.twig' %}
 
-{% block page_name %}{{ pageName }}{% endblock %}
+{% block page_name %}{{ siteMap['list']['name'] }}{% endblock %}
 {% block page_description %}{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path(siteMap['list']['path']) }}"><i class="fa {{ siteMap['list']['icon'] }}"></i> {{ pageName }}</a></li>
+        <li class="active">{{ siteMap['list']['name'] }}</li>
+    </ol>
+
+{% endblock %}
+
 
 {% block body %}
     <div class="row">
@@ -40,7 +49,7 @@
                                 {% for contractor in contractors %}
                                     <tr>
                                         <td>{{ contractor.id }}</td>
-                                        <td>{{ contractor.name }}</td>
+                                        <td>{{ contractor.name }}<br><small>{{ contractor.address }}</small></td>
                                         <td>{{ contractor.nip }}</td>
                                         <td>{{ contractor.regon }}</td>
                                         <td>{{ contractor.address }}</td>
@@ -50,8 +59,10 @@
                                         <td>{{ contractor.email }}</td>
                                         <td>{{ contractor.discount|number_format(2) }}%</td>
                                         <td>
-                                            <a href="{{ path('app_contractor_get', {contractorId: contractor.id}) }}" data-toggle="tooltip" title="Podgląd i edycja"><i class="fa fa-search"></i></a>
-                                            <a href="{{ path('app_contractor_delete', {contractorId: contractor.id}) }}" data-toggle="tooltip" title="Usuń"><i class="fa fa-remove text-danger"></i></a>
+                                            <div class="pull-right">
+                                                <a href="{{ path('app_contractor_get', {contractorId: contractor.id}) }}" data-toggle="tooltip" title="Podgląd i edycja" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ path('app_contractor_delete', {contractorId: contractor.id}) }}" data-toggle="tooltip" title="Usuń" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                            </div>
                                         </td>
                                     </tr>
                                 {% endfor %}

@@ -1,7 +1,14 @@
 {% extends 'Common/template.twig' %}
 
-{% block page_name %}{{ pageName }}{% endblock %}
+{% block page_name %}{{ siteMap['list']['name'] }}{% endblock %}
 {% block page_description %}{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path(siteMap['list']['path']) }}"><i class="fa {{ siteMap['list']['icon'] }}"></i> {{ pageName }}</a></li>
+        <li class="active">{{ siteMap['list']['name'] }}</li>
+    </ol>
+{% endblock %}
 
 {% block body %}
     <div class="row">
@@ -50,8 +57,10 @@
                                         <td>{{ product.wholesalePrice|price_format }}</td>
                                         <td>{{ product.vatRate|number_format(0) }}%</td>
                                         <td>
-                                            <a href="{{ path('app_product_get', {productId: product.id}) }}" data-toggle="tooltip" title="Podgląd i edycja"><i class="fa fa-search"></i></a>
-                                            <a href="{{ path('app_product_delete', {productId: product.id}) }}" data-toggle="tooltip" title="Usuń"><i class="fa fa-remove text-danger"></i></a>
+                                            <div class="pull-right">
+                                                <a href="{{ path('app_product_get', {productId: product.id}) }}" data-toggle="tooltip" title="Podgląd i edycja" class="btn btn-success"><i class="fa fa-search"></i></a>
+                                                <a href="{{ path('app_product_delete', {productId: product.id}) }}" data-toggle="tooltip" title="Usuń" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+                                            </div>
                                         </td>
                                     </tr>
                                 {% endfor %}

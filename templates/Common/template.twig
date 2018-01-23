@@ -19,7 +19,7 @@
     <header class="main-header">
         <a href="{{ path('app_dashboard') }}" class="logo">
             <span class="logo-mini"><b>F</b></span>
-            <span class="logo-lg"><b>F</b>irma</span>
+            <span class="logo-lg">Firma</span>
         </a>
         <nav class="navbar navbar-static-top">
             <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -43,12 +43,9 @@
                 {{ block('page_name') }}
                 <small>{% block page_description %}Opis strony{% endblock %}</small>
             </h1>
-            {{ siteMap['name'] }}
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> TODO</a></li>
-                <li><a href="#">TODO</a></li>
-                <li class="active">TODO</li>
-            </ol>
+
+            {{ block('breadcrumb') }}
+
         </section>
 
         <section class="content">

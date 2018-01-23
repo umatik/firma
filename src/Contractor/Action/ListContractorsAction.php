@@ -20,7 +20,9 @@ final class ListContractorsAction extends BaseAction
         SitemapService $sitemapService
     ) {
         $contractors = $contractorFactory->create()->list();
-        $siteMap = $sitemapService->getPagemap(1);
+        $siteMap = $sitemapService->getPagemap(self::PAGE_NAME);
+
+
 
         return $responder([
             'menuService' => $menuService,

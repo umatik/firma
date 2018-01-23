@@ -16,7 +16,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 final class GetContractorAction extends BaseAction
 {
-    const PAGE_NAME = 'Podgląd kontrahenta';
+    const PAGE_NAME = 'Kontrahenci';
     const SUCCESSFUL_UPDATED_CONTRACTOR_MESSAGE = 'Pomyślnie zaktualizowano kontrahenta.';
 
     public function __invoke(
@@ -28,7 +28,7 @@ final class GetContractorAction extends BaseAction
         SitemapService $sitemapService
     ): Response {
         $contractorModel = $contractorFactory->create();
-        $siteMap = $sitemapService->getPagemap(1);
+        $siteMap = $sitemapService->getPagemap(self::PAGE_NAME);
 
         try {
             $contractor = $contractorModel->getById($contractorId);

@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class AddProductAction extends BaseAction
 {
-    const PAGE_NAME = 'Dodaj nowy produkt';
+    const PAGE_NAME = 'Produkty';
 
     public function __invoke(
         AddProductResponder $responder,
@@ -25,7 +25,7 @@ final class AddProductAction extends BaseAction
         SitemapService $sitemapService
     ): Response {
         $productModel = $productFactory->create();
-        $siteMap = $sitemapService->getPagemap(2);
+        $siteMap = $sitemapService->getPagemap(self::PAGE_NAME);
 
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);

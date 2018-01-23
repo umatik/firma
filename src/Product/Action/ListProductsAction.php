@@ -21,7 +21,7 @@ final class ListProductsAction extends BaseAction
         SitemapService $sitemapService
     ): Response {
         $products = $productFactory->create()->list();
-        $siteMap = $sitemapService->getPagemap(2);
+        $siteMap = $sitemapService->getPagemap(self::PAGE_NAME);
 
         return $responder([
             'menuService' => $menuService,

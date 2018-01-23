@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class AddContractorAction extends BaseAction
 {
-    const PAGE_NAME = 'Dodaj kontrahenta';
+    const PAGE_NAME = 'Kontrahenci';
     const SUCCESSFUL_CONTRACTOR_ADD_MESSAGE = 'Pomyślnie dodano kontrahenta.';
 
     public function __invoke(
@@ -28,7 +28,7 @@ final class AddContractorAction extends BaseAction
         $contractor = new Contractor();
         $form = $this->createForm(ContractorType::class, $contractor);
 
-        $siteMap = $sitemapService->getPagemap(1);
+        $siteMap = $sitemapService->getPagemap(self::PAGE_NAME);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
