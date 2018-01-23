@@ -48,4 +48,45 @@ final class SitemapService
         $map = $this->getSitemap();
         return $map[$index];
     }
+
+
+
+
+
+
+    private function x(){
+
+        $test = [
+            'Kontrahenci' => [
+                'lista' => [
+                    'name' => 'Lista kontrahentów',
+                    'path' => 'app_contractor_list',
+                    'icon' => 'fa-group',
+                    'subtree' => [],
+                    ],
+                'nowy' => [
+                    'name' => 'Nowy kontrahent',
+                    'path' => 'app_contractor_list',
+                    'icon' => 'fa-group',
+                    'subtree' => [],
+                    ],
+                'edycja' => [
+                    'name' => 'Edycja kontrahenta',
+                    'path' => 'app_contractor_list',
+                    'icon' => 'fa-group',
+                    'subtree' => [],
+                    ],
+                ]
+            ];
+    }
+
+
+
+
+
+
+
+
+
+
 }

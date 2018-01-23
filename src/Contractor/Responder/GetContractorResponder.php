@@ -13,7 +13,8 @@ final class GetContractorResponder extends BaseResponder
         return new Response($this->twig->render('Contractors/get_contractor.twig', [
             'menu' => $data['menuService']->render(),
             'pageName' => $data['pageName'],
-            'form' => $data['form']->createView()
+            'form' => $data['form']->createView(),
+            'siteMap' => $data['siteMap']
         ]));
     }
 }

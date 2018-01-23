@@ -10,10 +10,13 @@ final class GetProductResponder extends BaseResponder
 {
     public function __invoke(array $data = []): Response
     {
-        return new Response($this->twig->render('Product/get_product.twig', [
-            'menu' => $data['menuService']->render(),
-            'pageName' => $data['pageName'],
-            'form' => $data['form']->createView()
-        ]));
+        return new Response(
+            $this->twig->render('Product/get_product.twig', [
+                'menu' => $data['menuService']->render(),
+                'pageName' => $data['pageName'],
+                'form' => $data['form']->createView(),
+                'siteMap' => $data['siteMap']
+            ]
+        ));
     }
 }

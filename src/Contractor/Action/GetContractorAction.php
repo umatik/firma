@@ -6,6 +6,7 @@ namespace App\Contractor\Action;
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Exception\NotFoundException;
 use App\Common\Domain\Service\MenuService;
+use App\Common\Domain\Service\SitemapService;
 use App\Contractor\Domain\Form\ContractorType;
 use App\Contractor\Domain\Model\ContractorFactory;
 use App\Contractor\Responder\GetContractorResponder;
@@ -23,9 +24,11 @@ final class GetContractorAction extends BaseAction
         MenuService $menuService,
         ContractorFactory $contractorFactory,
         Request $request,
-        int $contractorId
+        int $contractorId,
+        SitemapService $sitemapService
     ): Response {
         $contractorModel = $contractorFactory->create();
+        $siteMap = $sitemapService->getPagemap(1);
 
         try {
             $contractor = $contractorModel->getById($contractorId);
@@ -49,7 +52,8 @@ final class GetContractorAction extends BaseAction
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
-            'form' => $form
+            'form' => $form,
+            'siteMap' => $siteMap
         ]);
     }
 }

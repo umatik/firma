@@ -12,9 +12,10 @@ final class ListProductsResponder extends BaseResponder
     {
         return new Response(
             $this->twig->render('Product/list_products.twig', [
-            'menu' => $data['menuService']->render(),
-            'pageName' => $data['pageName'],
-            'products' => $data['products']
+                'menu' => $data['menuService']->render(),
+                'pageName' => $data['pageName'],
+                'products' => $data['products'],
+                'siteMap' => $data['siteMap']
         ]));
     }
 }

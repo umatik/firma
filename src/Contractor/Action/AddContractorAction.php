@@ -5,6 +5,7 @@ namespace App\Contractor\Action;
 
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Service\MenuService;
+use App\Common\Domain\Service\SitemapService;
 use App\Contractor\Domain\Entity\Contractor;
 use App\Contractor\Domain\Form\ContractorType;
 use App\Contractor\Domain\Model\ContractorFactory;
@@ -21,10 +22,13 @@ final class AddContractorAction extends BaseAction
         AddContractorResponder $responder,
         MenuService $menuService,
         Request $request,
-        ContractorFactory $contractorFactory
+        ContractorFactory $contractorFactory,
+        SitemapService $sitemapService
     ): Response {
         $contractor = new Contractor();
         $form = $this->createForm(ContractorType::class, $contractor);
+
+        $siteMap = $sitemapService->getPagemap(1);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -40,7 +44,8 @@ final class AddContractorAction extends BaseAction
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
-            'form' => $form
+            'form' => $form,
+            'siteMap' => $siteMap
         ]);
     }
 }

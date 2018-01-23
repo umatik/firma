@@ -14,7 +14,7 @@ final class DashboardResponder extends BaseResponder
             'menu' => $data['menuService']->render(),
             'pageName' => $data['pageName'],
             'pageDescription' => $data['pageDescription'],
-            'siteMap' => $data['sitemapService']
+            'siteMap' => $data['siteMap']
         ]));
     }
 }

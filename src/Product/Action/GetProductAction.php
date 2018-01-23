@@ -6,6 +6,7 @@ namespace App\Product\Action;
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Exception\NotFoundException;
 use App\Common\Domain\Service\MenuService;
+use App\Common\Domain\Service\SitemapService;
 use App\Product\Domain\Form\ProductType;
 use App\Product\Domain\Model\ProductFactory;
 use App\Product\Responder\GetProductResponder;
@@ -22,9 +23,12 @@ final class GetProductAction extends BaseAction
         int $productId,
         MenuService $menuService,
         Request $request,
-        ProductFactory $productFactory
+        ProductFactory $productFactory,
+        SitemapService $sitemapService
     ): Response {
         $productModel = $productFactory->create();
+        $siteMap = $sitemapService->getPagemap(2);
+
         try {
             $product = $productModel->getById($productId);
         } catch (NotFoundException $e) {
@@ -41,7 +45,8 @@ final class GetProductAction extends BaseAction
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
-            'form' => $form
+            'form' => $form,
+            'siteMap' => $siteMap
         ]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Product\Action;
 
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Service\MenuService;
+use App\Common\Domain\Service\SitemapService;
 use App\Product\Domain\Entity\Product;
 use App\Product\Domain\Form\ProductType;
 use App\Product\Domain\Model\ProductFactory;
@@ -20,15 +21,18 @@ final class AddProductAction extends BaseAction
         AddProductResponder $responder,
         MenuService $menuService,
         Request $request,
-        ProductFactory $productFactory
+        ProductFactory $productFactory,
+        SitemapService $sitemapService
     ): Response {
         $productModel = $productFactory->create();
+        $siteMap = $sitemapService->getPagemap(2);
 
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
 
         $form->handleRequest($request);
-        if ( $form->isSubmitted() && $form->isValid()) {
+
+        if ($form->isSubmitted() && $form->isValid()) {
             $productModel->save($product);
 
             return $this->redirectToRoute('app_product_get', [
@@ -39,7 +43,8 @@ final class AddProductAction extends BaseAction
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
-            'form' => $form
+            'form' => $form,
+            'siteMap' => $siteMap
         ]);
     }
 }
