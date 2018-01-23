@@ -43,11 +43,11 @@
                                         <td>{{ product.name }}</td>
                                         <td>{{ product.unit }}</td>
                                         <td>{{ product.pkwiu|default('---') }}</td>
-                                        <td>{{ product.amountDiscount|number_format(2) }} zł</td>
+                                        <td>{{ product.amountDiscount|price_format }}</td>
                                         <td>{{ product.percentageDiscount|number_format(2) }}%</td>
-                                        <td>{{ product.price|number_format(2) }} zł</td>
+                                        <td>{{ product.price|price_format }}</td>
                                         <td>{{ product.priceTypeText }}</td>
-                                        <td>{{ product.wholesalePrice|number_format(2) }} zł</td>
+                                        <td>{{ product.wholesalePrice|price_format }}</td>
                                         <td>{{ product.vatRate|number_format(0) }}%</td>
                                         <td>
                                             <a href="{{ path('app_product_get', {productId: product.id}) }}" data-toggle="tooltip" title="Podgląd i edycja"><i class="fa fa-search"></i></a>
