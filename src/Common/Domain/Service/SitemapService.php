@@ -42,4 +42,10 @@ final class SitemapService
     {
         return $this->sitemap;
     }
+
+    public function getPagemap($index): array
+    {
+        $map = $this->getSitemap();
+        return $map[$index];
+    }
 }

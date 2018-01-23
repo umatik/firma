@@ -14,6 +14,7 @@ final class ListContractorsResponder extends BaseResponder
             'menu' => $data['menuService']->render(),
             'pageName' => $data['pageName'],
             'contractors' => $data['contractors'],
+            'siteMap' => $data['sitemapService']
         ]));
     }
 }

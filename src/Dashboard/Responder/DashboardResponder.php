@@ -13,7 +13,8 @@ final class DashboardResponder extends BaseResponder
         return new Response($this->twig->render('Dashboard/dashboard.twig', [
             'menu' => $data['menuService']->render(),
             'pageName' => $data['pageName'],
-            'pageDescription' => $data['pageDescription']
+            'pageDescription' => $data['pageDescription'],
+            'siteMap' => $data['sitemapService']
         ]));
     }
 }

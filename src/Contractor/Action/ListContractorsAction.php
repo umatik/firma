@@ -5,6 +5,7 @@ namespace App\Contractor\Action;
 
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Service\MenuService;
+use App\Common\Domain\Service\SitemapService;
 use App\Contractor\Domain\Model\ContractorFactory;
 use App\Contractor\Responder\ListContractorsResponder;
 
@@ -15,14 +16,17 @@ final class ListContractorsAction extends BaseAction
     public function __invoke(
         ListContractorsResponder $responder,
         MenuService $menuService,
-        ContractorFactory $contractorFactory
+        ContractorFactory $contractorFactory,
+        SitemapService $sitemapService
     ) {
         $contractors = $contractorFactory->create()->list();
+        $map = $sitemapService->getSitemap();
 
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
-            'contractors' => $contractors
+            'contractors' => $contractors,
+            'sitemapService' => $map
         ]);
     }
 }
