@@ -1,5 +1,5 @@
 # DevBay Community - Firma
-@todo badge do wpięcia
+[![Build Status](https://travis-ci.org/devbay-pl/firma.svg?branch=master)](https://travis-ci.org/devbay-pl/firma)
 
 ## O projekcie
 **Firma** to projekt, którego celem jest stworzenie przyjaznego miejsca dla przedsiębiorcy.
