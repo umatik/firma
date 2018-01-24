@@ -1,5 +1,7 @@
 # Dostępne etykiety
-![Labele](https://devbay.pl/wp-content/uploads/2018/01/Labels.png)
+<p align="center">
+  <img src="https://devbay.pl/wp-content/uploads/2018/01/Labels.png" alt="Etykiety"/>
+</p>
 
 # Legenda
 ### Problemy
