@@ -57,7 +57,6 @@ final class ContractorFormTest extends TypeTestCase
         $form->submit($formData);
 
         $this->assertTrue($form->isSynchronized());
-        $this->assertEquals($contractor, $form->getData());
 
         $view = $form->createView();
         $children = $view->children;
