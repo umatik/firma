@@ -27,6 +27,8 @@ Wszystkie pull requesty wystawiaj do brancha `master` - w późniejszej fazie pr
 $ composer test
 ```
 
+## Dokumentację znajdziesz [tutaj](https://github.com/devbay-pl/firma/blob/master/.github/docs/README.md).
+
 **Do zobaczenia w kodzie**!
 
 [Githubie]: https://github.com/devbay-pl/firma/pulls
