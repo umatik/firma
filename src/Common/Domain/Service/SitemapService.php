@@ -5,39 +5,6 @@ namespace App\Common\Domain\Service;
 
 final class SitemapService
 {
-    private $sitemap_old = [
-        [
-            'name' => 'Dashboard',
-            'path' => 'app_dashboard',
-            'icon' => 'fa-dashboard',
-            'subtree' => [],
-        ],
-        [
-            'name' => 'Kontrahenci',
-            'path' => 'app_contractor_list',
-            'icon' => 'fa-group',
-            'subtree' => [],
-        ],
-        [
-            'name' => 'Produkty',
-            'path' => 'app_product_list',
-            'icon' => 'fa-briefcase',
-            'subtree' => [],
-        ],
-        [
-            'name' => 'Raporty',
-            'path' => '',
-            'icon' => 'fa-database',
-            'subtree' => [
-                [
-                    'name' => 'JPK',
-                    'path' => '',
-                    'icon' => '',
-                ]
-            ],
-        ],
-    ];
-
     private $sitemap = [
         'Dashboard' => [
             'list' => [
@@ -46,7 +13,6 @@ final class SitemapService
                 'icon' => 'fa-dashboard',
                 'subtree' => []
             ]
-
         ],
         'Kontrahenci' => [
             'list' => [
@@ -130,14 +96,5 @@ final class SitemapService
         }
 
         return $map;
-
     }
-
-
-
-
-
-
-
-
 }

@@ -8,13 +8,13 @@
         <li><a href="{{ path(siteMap['list']['path']) }}"><i class="fa {{ siteMap['list']['icon'] }}"></i> {{ pageName }}</a></li>
         <li class="active">{{ siteMap['list']['name'] }}</li>
     </ol>
-
 {% endblock %}
 
 
 {% block body %}
     <div class="row">
         <div class="col-md-12">
+
             <div class="box">
                 <div class="box-header">
                     <a href="{{ path('app_contractor_add') }}" class="btn btn-success btn-sm pull-right">Dodaj nowego kontrahenta</a>

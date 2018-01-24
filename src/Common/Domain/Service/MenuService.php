@@ -19,7 +19,6 @@ final class MenuService
         RouterInterface $router
     ) {
         $this->twig = $twig;
-        //$this->menuItems = $sitemapService->getSitemap();
         $this->menuItems = $sitemapService->getMenumap();
         $this->router = $router;
     }
