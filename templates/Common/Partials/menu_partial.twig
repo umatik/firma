@@ -1,6 +1,7 @@
+{%  set route = app.request.attributes.get('_route') %}
 <ul class="sidebar-menu" data-widget="tree">
     {% for menuItem in menuItems %}
-        <li class="{{ menuItem.class }}">
+        <li class="{{ menuItem.class }} {% if  route == menuItem.path %} active {% endif %}">
             <a href="{{ menuItem.url }}">
                 <i class="fa {{ menuItem.icon }}"></i> <span>{{ menuItem.name }}</span>
 

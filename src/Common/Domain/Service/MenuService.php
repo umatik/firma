@@ -13,6 +13,7 @@ final class MenuService
     private $router;
     private $menuItems;
 
+
     public function __construct(
         \Twig_Environment $twig,
         SitemapService $sitemapService,
@@ -56,13 +57,13 @@ final class MenuService
         foreach ($this->menuItems as $index => $menuItem) {
             $url = empty($menuItem['path']) ? '#' : $this->router->generate($menuItem['path']);
             $this->menuItems[$index]['url'] = $url;
-            unset($this->menuItems[$index]['path']);
+            //unset($this->menuItems[$index]['path']);
 
             if ($this->hasSubtree($menuItem)) {
                 foreach ($menuItem['subtree'] as $subIndex => $subItem) {
                     $url = empty($subItem['path']) ? '#' : $this->router->generate($subItem['path']);
                     $this->menuItems[$index]['subtree'][$subIndex]['url'] = $url;
-                    unset($this->menuItems[$index]['subtree'][$subIndex]['path']);
+                    //unset($this->menuItems[$index]['subtree'][$subIndex]['path']);
                 }
             }
         }
