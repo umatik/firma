@@ -28,7 +28,6 @@ final class GetContractorAction extends BaseAction
         SitemapService $sitemapService
     ): Response {
         $contractorModel = $contractorFactory->create();
-        $siteMap = $sitemapService->getPagemap(self::PAGE_NAME);
 
         try {
             $contractor = $contractorModel->getById($contractorId);
@@ -49,11 +48,13 @@ final class GetContractorAction extends BaseAction
             ]);
         }
 
+        $breadcumb = $sitemapService->getBreadcrumbMap('app_contractor_get');
+
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
             'form' => $form,
-            'siteMap' => $siteMap
+            'breadcrumbData' => $breadcumb
         ]);
     }
 }

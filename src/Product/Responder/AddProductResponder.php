@@ -15,7 +15,7 @@ final class AddProductResponder extends BaseResponder
                 'menu' => $data['menuService']->render(),
                 'pageName' => $data['pageName'],
                 'form' => $data['form']->createView(),
-                'siteMap' => $data['siteMap']
+                'breadcrumbData' => $data['breadcrumbData']
             ]
         ));
     }

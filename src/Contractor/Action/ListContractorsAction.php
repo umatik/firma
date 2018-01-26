@@ -20,15 +20,13 @@ final class ListContractorsAction extends BaseAction
         SitemapService $sitemapService
     ) {
         $contractors = $contractorFactory->create()->list();
-        $siteMap = $sitemapService->getPagemap(self::PAGE_NAME);
-
-
+        $breadcumb = $sitemapService->getBreadcrumbMap('app_contractor_list');
 
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
             'contractors' => $contractors,
-            'siteMap' => $siteMap
+            'breadcrumbData' => $breadcumb
         ]);
     }
 }

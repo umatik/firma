@@ -27,10 +27,8 @@ final class AddContractorAction extends BaseAction
     ): Response {
         $contractor = new Contractor();
         $form = $this->createForm(ContractorType::class, $contractor);
-
-        $siteMap = $sitemapService->getPagemap(self::PAGE_NAME);
-
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $contractorFactory->create()->save($contractor);
 
@@ -41,11 +39,13 @@ final class AddContractorAction extends BaseAction
             ]);
         }
 
+        $breadcumb = $sitemapService->getBreadcrumbMap('app_contractor_add');
+
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
             'form' => $form,
-            'siteMap' => $siteMap
+            'breadcrumbData' => $breadcumb
         ]);
     }
 }

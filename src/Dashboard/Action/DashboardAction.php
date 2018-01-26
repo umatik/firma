@@ -19,13 +19,11 @@ final class DashboardAction extends BaseAction
         MenuService $menuService,
         SitemapService $sitemapService
     ): Response {
-        $siteMap = $sitemapService->getPagemap(self::PAGE_NAME);
 
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
             'pageDescription' => self::PAGE_DESCRIPTION,
-            'siteMap' => $siteMap
         ]);
     }
 }

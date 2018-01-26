@@ -1,0 +1,19 @@
+<ol class="breadcrumb">
+    <ol class="breadcrumb">
+        {% for item in breadcrumbData %}
+            {% if loop.first %}
+                <li><a href="{{ url(item['path']) }}"><span class="fa {{ item['icon'] }}"></span> {{ item['name'] }}</a></li>
+            {% else %}
+                {% if loop.last %}
+                    <li class="active">{{ item['name'] }}</li>
+                {% else %}
+                    {% if item['path'] %}
+                        <li><a href="{{ url(item['path']) }}">{{ item['name'] }}</a></li>
+                    {%  else %}
+                        <li>{{ item['name'] }}</li>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </ol>
+</ol>

@@ -6,68 +6,83 @@ namespace App\Common\Domain\Service;
 final class SitemapService
 {
     private $sitemap = [
-        'Dashboard' => [
-            'list' => [
-                'name' => 'Dashboard',
-                'path' => 'app_dashboard',
-                'icon' => 'fa-dashboard',
-                'subtree' => []
-            ]
+        'dashboard' => [
+            'name' => 'Dashboard',
+            'path' => 'app_dashboard',
+            'icon' => 'fa-dashboard',
+            'parent' => '',
+            'isMenuItem' => true,
+            'subtree' => [],
         ],
-        'Kontrahenci' => [
-            'list' => [
-                'name' => 'Lista kontrahentów',
-                'path' => 'app_contractor_list',
-                'icon' => 'fa-group',
-                'subtree' => []
-            ],
-            'add' => [
-                'name' => 'Nowy kontrahent',
-                'path' => 'app_contractor_add',
-                'icon' => 'fa-group',
-                'subtree' => []
-            ],
-            'get' => [
-                'name' => 'Edycja danych kontrahenta',
-                'path' => 'app_contractor_get',
-                'icon' => 'fa-group',
-                'subtree' => []
-            ],
+        'contractor_list' => [
+            'name' => 'Kontrahenci',
+            'path' => 'app_contractor_list',
+            'icon' => 'fa-group',
+            'parent' => '',
+            'isMenuItem' => true,
+            'subtree' => [],
         ],
-        'Produkty' => [
-            'list' => [
-                'name' => 'Lista produktów',
-                'path' => 'app_product_list',
-                'icon' => 'fa-briefcase',
-                'subtree' => []
-            ],
-            'add' => [
-                'name' => 'Nowy produkt',
-                'path' => 'app_product_add',
-                'icon' => 'fa-briefcase',
-                'subtree' => []
-            ],
-            'get' => [
-                'name' => 'Edycja danych produktu',
-                'path' => 'app_product_get',
-                'icon' => 'fa-briefcase',
-                'subtree' => []
-            ],
+        'contractor_add' => [
+            'name' => 'Nowy kontrahent',
+            'path' => 'app_contractor_add',
+            'icon' => '',
+            'parent' => 'contractor_list',
+            'isMenuItem' => false,
+            'subtree' => [],
         ],
-        'Raporty' => [
-            'list' => [
-                'name' => 'Raporty',
-                'path' => '',
-                'icon' => 'fa-database',
-                'subtree' => [
-                    [
-                        'name' => 'JPK',
-                        'path' => '',
-                        'icon' => '',
-                    ]
+        'contractor_get' => [
+            'name' => 'Dane kontrahenta',
+            'path' => 'app_contractor_get',
+            'icon' => '',
+            'parent' => 'contractor_list',
+            'isMenuItem' => false,
+            'subtree' => [],
+        ],
+        'product_list' => [
+            'name' => 'Produkty',
+            'path' => 'app_product_list',
+            'icon' => 'fa-briefcase',
+            'parent' => '',
+            'isMenuItem' => true,
+            'subtree' => [],
+        ],
+        'product_add' => [
+            'name' => 'Produkty',
+            'path' => 'app_product_add',
+            'icon' => '',
+            'parent' => 'product_list',
+            'isMenuItem' => false,
+            'subtree' => [],
+        ],
+        'product_get' => [
+            'name' => 'Produkty',
+            'path' => 'app_product_get',
+            'icon' => '',
+            'parent' => 'product_list',
+            'isMenuItem' => false,
+            'subtree' => [],
+        ],
+        'raport' => [
+            'name' => 'Raporty',
+            'path' => '',
+            'icon' => 'fa-database',
+            'parent' => '',
+            'isMenuItem' => true,
+            'subtree' => [
+                [
+                    'name' => 'JPK',
+                    'path' => 'app_raport_b',
+                    'icon' => 'a',
+                    'parent' => 'raport',
                 ],
-            ]
-        ]
+                [
+                    'name' => 'ALAMAKOTA',
+                    'path' => 'app_raport_a',
+                    'icon' => '',
+                    'parent' => 'raport',
+                ]
+            ],
+        ],
     ];
 
     public function getSitemap(): array
@@ -75,24 +90,43 @@ final class SitemapService
         return $this->sitemap;
     }
 
-    public function getPagemap($index): array
+    public function getBreadcrumbMap($path)
     {
-        $map = $this->getSitemap();
-        return $map[$index];
+        $sitemap = $this->getSitemap();
+        $menuItem = [];
+
+        foreach ($sitemap as $key => $item) {
+            if ($item['path'] == $path) {
+                $menuItem = $item;
+            } else {
+                foreach ($item['subtree'] as $value) {
+                    if ($value['path'] == $path) {
+                        $menuItem = $value;
+                    }
+                }
+            }
+        }
+
+        $breadcrumb = [$sitemap['dashboard']];
+
+        if ($menuItem['parent']) {
+            $breadcrumb[] = $sitemap[$menuItem['parent']];
+        }
+
+        $breadcrumb[] = $menuItem;
+
+        return $breadcrumb;
     }
 
     public function getMenumap(): array
     {
-        $sitemap = $this->getSitemap();
         $map = [];
+        $sitemap = $this->getSitemap();
 
-        foreach ($sitemap as $key => $value) {
-            $map[] = [
-                'name' => $key,
-                'path' => $value['list']['path'],
-                'icon' => $value['list']['icon'],
-                'subtree' => $value['list']['subtree']
-            ];
+        foreach ($sitemap as $key => $item) {
+            if ($item['isMenuItem']) {
+                $map[] = $item;
+            }
         }
 
         return $map;

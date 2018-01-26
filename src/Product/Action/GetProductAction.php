@@ -27,7 +27,6 @@ final class GetProductAction extends BaseAction
         SitemapService $sitemapService
     ): Response {
         $productModel = $productFactory->create();
-        $siteMap = $sitemapService->getPagemap(self::PAGE_NAME);
 
         try {
             $product = $productModel->getById($productId);
@@ -36,17 +35,19 @@ final class GetProductAction extends BaseAction
         }
 
         $form = $this->createForm(ProductType::class, $product);
-
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $productModel->save($product);
         }
+
+        $breadcumb = $sitemapService->getBreadcrumbMap('app_product_get');
 
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
             'form' => $form,
-            'siteMap' => $siteMap
+            'breadcrumbData' => $breadcumb
         ]);
     }
 }

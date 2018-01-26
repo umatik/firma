@@ -2,14 +2,11 @@
 
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
 
-{% block page_name %}{{ siteMap['get']['name'] }}{% endblock %}
+{% block page_name %}{{ pageName }}{% endblock %}
 {% block page_description %}{% endblock %}
 
 {% block breadcrumb %}
-    <ol class="breadcrumb">
-        <li><a href="{{ path(siteMap['list']['path']) }}"><i class="fa {{ siteMap['get']['icon'] }}"></i> {{ pageName }}</a></li>
-        <li class="active">{{ siteMap['get']['name'] }}</li>
-    </ol>
+    {{ include('Common/Partials/breadcrumbs_partial.twig', { 'breadcrumbData': breadcrumbData }) }}
 {% endblock %}
 
 {% block body %}
