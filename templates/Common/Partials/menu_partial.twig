@@ -1,10 +1,9 @@
 {%  set route = app.request.attributes.get('_route') %}
 <ul class="sidebar-menu" data-widget="tree">
     {% for menuItem in menuItems %}
-        <li class="{{ menuItem.class }} {% if  route == menuItem.path %} active {% endif %}">
+        <li class="{{ menuItem.class }} {{ menuItem.active }}">
             <a href="{{ menuItem.url }}">
                 <i class="fa {{ menuItem.icon }}"></i> <span>{{ menuItem.name }}</span>
-
                 {% if menuItem.subtree is not empty %}
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
@@ -14,7 +13,7 @@
             {% if menuItem.subtree is not empty %}
                 <ul class="treeview-menu">
                     {% for subItem in menuItem.subtree %}
-                        <li><a href="{{ subItem.url }}"><i class="fa {{ subItem.icon }}"></i> {{ subItem.name }}</a></li>
+                        <li class="{{ subItem.subtreeActive }}"><a href="{{ subItem.url }}"><i class="fa {{ subItem.icon }}"></i> {{ subItem.name }}</a></li>
                     {% endfor %}
                 </ul>
             {% endif %}
