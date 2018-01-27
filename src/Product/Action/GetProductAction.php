@@ -5,6 +5,7 @@ namespace App\Product\Action;
 
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Exception\NotFoundException;
+use App\Common\Domain\Service\BreadcrumbService;
 use App\Common\Domain\Service\MenuService;
 use App\Common\Domain\Service\SitemapService;
 use App\Product\Domain\Form\ProductType;
@@ -24,7 +25,8 @@ final class GetProductAction extends BaseAction
         MenuService $menuService,
         Request $request,
         ProductFactory $productFactory,
-        SitemapService $sitemapService
+        SitemapService $sitemapService,
+        BreadcrumbService $breadcrumbService
     ): Response {
         $productModel = $productFactory->create();
 
@@ -41,13 +43,13 @@ final class GetProductAction extends BaseAction
             $productModel->save($product);
         }
 
-        $breadcumb = $sitemapService->getBreadcrumbMap('app_product_get');
+        $breadcumb = $breadcrumbService->render('app_product_get');
 
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
             'form' => $form,
-            'breadcrumbData' => $breadcumb
+            'breadcrumb' => $breadcumb
         ]);
     }
 }

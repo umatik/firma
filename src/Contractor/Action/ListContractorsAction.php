@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace App\Contractor\Action;
 
 use App\Common\Action\BaseAction;
+use App\Common\Domain\Service\BreadcrumbService;
 use App\Common\Domain\Service\MenuService;
 use App\Common\Domain\Service\SitemapService;
 use App\Contractor\Domain\Model\ContractorFactory;
@@ -17,16 +18,17 @@ final class ListContractorsAction extends BaseAction
         ListContractorsResponder $responder,
         MenuService $menuService,
         ContractorFactory $contractorFactory,
-        SitemapService $sitemapService
+        SitemapService $sitemapService,
+        BreadcrumbService $breadcrumbService
     ) {
         $contractors = $contractorFactory->create()->list();
-        $breadcumb = $sitemapService->getBreadcrumbMap('app_contractor_list');
+        $breadcumb = $breadcrumbService->render('app_contractor_list');
 
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
             'contractors' => $contractors,
-            'breadcrumbData' => $breadcumb
+            'breadcrumb' => $breadcumb
         ]);
     }
 }

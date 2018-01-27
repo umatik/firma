@@ -5,13 +5,7 @@
 {% block page_name %}{{ pageName }}{% endblock %}
 {% block page_description %}{% endblock %}
 
-{% block breadcrumb %}
-    {{ include('Common/Partials/breadcrumbs_partial.twig', { 'breadcrumbData': breadcrumbData }) }}
-{% endblock %}
-
-
 {% block body %}
-
     <div class="row">
         <div class="col-md-12">
             {% for message in app.flashes('info') %}

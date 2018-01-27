@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace App\Contractor\Action;
 
 use App\Common\Action\BaseAction;
+use App\Common\Domain\Service\BreadcrumbService;
 use App\Common\Domain\Service\MenuService;
 use App\Common\Domain\Service\SitemapService;
 use App\Contractor\Domain\Entity\Contractor;
@@ -23,7 +24,8 @@ final class AddContractorAction extends BaseAction
         MenuService $menuService,
         Request $request,
         ContractorFactory $contractorFactory,
-        SitemapService $sitemapService
+        SitemapService $sitemapService,
+        BreadcrumbService $breadcrumbService
     ): Response {
         $contractor = new Contractor();
         $form = $this->createForm(ContractorType::class, $contractor);
@@ -39,13 +41,13 @@ final class AddContractorAction extends BaseAction
             ]);
         }
 
-        $breadcumb = $sitemapService->getBreadcrumbMap('app_contractor_add');
+        $breadcumb = $breadcrumbService->render('app_contractor_add');
 
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
             'form' => $form,
-            'breadcrumbData' => $breadcumb
+            'breadcrumb' => $breadcumb
         ]);
     }
 }

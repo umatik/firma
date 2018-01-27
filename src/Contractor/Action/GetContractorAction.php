@@ -5,6 +5,7 @@ namespace App\Contractor\Action;
 
 use App\Common\Action\BaseAction;
 use App\Common\Domain\Exception\NotFoundException;
+use App\Common\Domain\Service\BreadcrumbService;
 use App\Common\Domain\Service\MenuService;
 use App\Common\Domain\Service\SitemapService;
 use App\Contractor\Domain\Form\ContractorType;
@@ -25,7 +26,8 @@ final class GetContractorAction extends BaseAction
         ContractorFactory $contractorFactory,
         Request $request,
         int $contractorId,
-        SitemapService $sitemapService
+        SitemapService $sitemapService,
+        BreadcrumbService $breadcrumbService
     ): Response {
         $contractorModel = $contractorFactory->create();
 
@@ -48,13 +50,13 @@ final class GetContractorAction extends BaseAction
             ]);
         }
 
-        $breadcumb = $sitemapService->getBreadcrumbMap('app_contractor_get');
+        $breadcumb = $breadcrumbService->render('app_contractor_get');
 
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
             'form' => $form,
-            'breadcrumbData' => $breadcumb
+            'breadcrumb' => $breadcumb
         ]);
     }
 }

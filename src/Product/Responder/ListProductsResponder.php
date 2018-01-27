@@ -15,7 +15,7 @@ final class ListProductsResponder extends BaseResponder
                 'menu' => $data['menuService']->render(),
                 'pageName' => $data['pageName'],
                 'products' => $data['products'],
-                'breadcrumbData' => $data['breadcrumbData']
+                'breadcrumb' => $data['breadcrumb']
         ]));
     }
 }

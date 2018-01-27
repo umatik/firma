@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace App\Product\Action;
 
 use App\Common\Action\BaseAction;
+use App\Common\Domain\Service\BreadcrumbService;
 use App\Common\Domain\Service\MenuService;
 use App\Common\Domain\Service\SitemapService;
 use App\Product\Domain\Model\ProductFactory;
@@ -18,16 +19,17 @@ final class ListProductsAction extends BaseAction
         ListProductsResponder $responder,
         MenuService $menuService,
         ProductFactory $productFactory,
-        SitemapService $sitemapService
+        SitemapService $sitemapService,
+        BreadcrumbService $breadcrumbService
     ): Response {
         $products = $productFactory->create()->list();
-        $breadcumb = $sitemapService->getBreadcrumbMap('app_product_list');
+        $breadcumb = $breadcrumbService->render('app_product_list');
 
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
             'products' => $products,
-            'breadcrumbData' => $breadcumb
+            'breadcrumb' => $breadcumb
         ]);
     }
 }

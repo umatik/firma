@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace App\Raport\Action;
 
 use App\Common\Action\BaseAction;
+use App\Common\Domain\Service\BreadcrumbService;
 use App\Common\Domain\Service\MenuService;
 use App\Common\Domain\Service\SitemapService;
 use App\Raport\Responder\RaportResponder;
@@ -17,15 +18,16 @@ final class RaportBAction extends BaseAction
     public function __invoke(
         RaportResponder $responder,
         MenuService $menuService,
-        SitemapService $sitemapService
+        SitemapService $sitemapService,
+        BreadcrumbService $breadcrumbService
     ): Response {
-        $breadcumb = $sitemapService->getBreadcrumbMap('app_raport_b');
+        $breadcumb = $breadcrumbService->render('app_raport_b');
 
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
             'pageDescription' => self::PAGE_DESCRIPTION,
-            'breadcrumbData' => $breadcumb
+            'breadcrumb' => $breadcumb
         ]);
     }
 }

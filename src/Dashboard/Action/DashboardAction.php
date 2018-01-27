@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace App\Dashboard\Action;
 
 use App\Common\Action\BaseAction;
+use App\Common\Domain\Service\BreadcrumbService;
 use App\Common\Domain\Service\MenuService;
 use App\Common\Domain\Service\SitemapService;
 use App\Dashboard\Responder\DashboardResponder;
@@ -17,13 +18,16 @@ final class DashboardAction extends BaseAction
     public function __invoke(
         DashboardResponder $responder,
         MenuService $menuService,
-        SitemapService $sitemapService
+        SitemapService $sitemapService,
+        BreadcrumbService $breadcrumbService
     ): Response {
+        $breadcumb = $breadcrumbService->render('');
 
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
             'pageDescription' => self::PAGE_DESCRIPTION,
+            'breadcrumb' => $breadcumb
         ]);
     }
 }

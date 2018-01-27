@@ -90,34 +90,6 @@ final class SitemapService
         return $this->sitemap;
     }
 
-    public function getBreadcrumbMap($path)
-    {
-        $sitemap = $this->getSitemap();
-        $menuItem = [];
-
-        foreach ($sitemap as $key => $item) {
-            if ($item['path'] == $path) {
-                $menuItem = $item;
-            } else {
-                foreach ($item['subtree'] as $value) {
-                    if ($value['path'] == $path) {
-                        $menuItem = $value;
-                    }
-                }
-            }
-        }
-
-        $breadcrumb = [$sitemap['dashboard']];
-
-        if ($menuItem['parent']) {
-            $breadcrumb[] = $sitemap[$menuItem['parent']];
-        }
-
-        $breadcrumb[] = $menuItem;
-
-        return $breadcrumb;
-    }
-
     public function getMenumap(): array
     {
         $map = [];

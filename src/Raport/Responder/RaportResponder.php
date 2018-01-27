@@ -14,7 +14,7 @@ final class RaportResponder extends BaseResponder
             'menu' => $data['menuService']->render(),
             'pageName' => $data['pageName'],
             'pageDescription' => $data['pageDescription'],
-            'breadcrumbData' => $data['breadcrumbData']
+            'breadcrumb' => $data['breadcrumb']
         ]));
     }
 }

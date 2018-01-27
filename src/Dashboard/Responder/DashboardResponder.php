@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace App\Dashboard\Responder;
 
 use App\Common\Responder\BaseResponder;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class DashboardResponder extends BaseResponder
@@ -13,7 +14,8 @@ final class DashboardResponder extends BaseResponder
         return new Response($this->twig->render('Dashboard/dashboard.twig', [
             'menu' => $data['menuService']->render(),
             'pageName' => $data['pageName'],
-            'pageDescription' => $data['pageDescription']
+            'pageDescription' => $data['pageDescription'],
+            'breadcrumb' => $data['breadcrumb']
         ]));
     }
 }

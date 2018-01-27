@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace App\Product\Action;
 
 use App\Common\Action\BaseAction;
+use App\Common\Domain\Service\BreadcrumbService;
 use App\Common\Domain\Service\MenuService;
 use App\Common\Domain\Service\SitemapService;
 use App\Product\Domain\Entity\Product;
@@ -22,7 +23,8 @@ final class AddProductAction extends BaseAction
         MenuService $menuService,
         Request $request,
         ProductFactory $productFactory,
-        SitemapService $sitemapService
+        SitemapService $sitemapService,
+        BreadcrumbService $breadcrumbService
     ): Response {
         $productModel = $productFactory->create();
 
@@ -39,13 +41,13 @@ final class AddProductAction extends BaseAction
             ]);
         }
 
-        $breadcumb = $sitemapService->getBreadcrumbMap('app_product_add');
+        $breadcumb = $breadcrumbService->render('app_product_add');
 
         return $responder([
             'menuService' => $menuService,
             'pageName' => self::PAGE_NAME,
             'form' => $form,
-            'breadcrumbData' => $breadcumb
+            'breadcrumb' => $breadcumb
         ]);
     }
 }
