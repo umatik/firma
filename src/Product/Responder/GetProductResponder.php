@@ -16,7 +16,7 @@ final class GetProductResponder extends BaseResponder
                 'pageName' => $data['pageName'],
                 'form' => $data['form']->createView(),
                 'breadcrumb' => $data['breadcrumb']
-            ]
-        ));
+            ])
+        );
     }
 }

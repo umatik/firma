@@ -16,6 +16,7 @@ final class ListProductsResponder extends BaseResponder
                 'pageName' => $data['pageName'],
                 'products' => $data['products'],
                 'breadcrumb' => $data['breadcrumb']
-        ]));
+            ])
+        );
     }
 }

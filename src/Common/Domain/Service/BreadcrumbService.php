@@ -26,7 +26,7 @@ final class BreadcrumbService
         ]);
     }
 
-    public function getBreadcrumbMap($path = NULL)
+    public function getBreadcrumbMap($path = null)
     {
         $menuItem = [];
 
