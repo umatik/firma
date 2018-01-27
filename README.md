@@ -1,5 +1,8 @@
-# DevBay Community - Firma
-@todo badge do wpięcia
+# DevBay Community - Firma 
+[![Build Status](https://travis-ci.org/devbay-pl/firma.svg?branch=master)](https://travis-ci.org/devbay-pl/firma)
+[![Issues](https://img.shields.io/github/issues/devbay-pl/firma.svg)](https://github.com/devbay-pl/firma/issues)
+[![License](https://img.shields.io/github/license/devbay-pl/firma.svg)](https://github.com/devbay-pl/firma/blob/master/LICENSE)
+
 
 ## O projekcie
 **Firma** to projekt, którego celem jest stworzenie przyjaznego miejsca dla przedsiębiorcy.
