@@ -32,7 +32,6 @@ final class AddProductAction extends BaseAction
         $form = $this->createForm(ProductType::class, $product);
 
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $productModel->save($product);
 
