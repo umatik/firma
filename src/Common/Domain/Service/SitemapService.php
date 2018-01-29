@@ -47,7 +47,7 @@ final class SitemapService
             'subtree' => [],
         ],
         'product_add' => [
-            'name' => 'Produkty',
+            'name' => 'Nowy produkt',
             'path' => 'app_product_add',
             'icon' => '',
             'parent' => 'product_list',
@@ -55,7 +55,7 @@ final class SitemapService
             'subtree' => [],
         ],
         'product_get' => [
-            'name' => 'Produkty',
+            'name' => 'Dane produktu',
             'path' => 'app_product_get',
             'icon' => '',
             'parent' => 'product_list',
@@ -102,5 +102,41 @@ final class SitemapService
         }
 
         return $map;
+    }
+
+    public function getSiteItem($path): array
+    {
+        $sitemap = $this->getSitemap();
+        $item = [];
+
+        if ($path) {
+            foreach ($sitemap as $key => $value) {
+                if ($this->hasSubtree($value['subtree'])) {
+                    $item = $this->getSubtree($value['subtree'], $path);
+                } elseif ($value['path'] == $path) {
+                    $item = $value;
+                }
+            }
+        }
+
+        return $item;
+    }
+
+    private function hasSubtree(array $menuItem)
+    {
+        return !empty($menuItem['subtree']);
+    }
+
+    private function getSubtree(array $subtree, $path): array
+    {
+        $menuItem = [];
+
+        foreach ($subtree as $value) {
+            if ($value['path'] == $path) {
+                $menuItem = $value;
+            }
+        }
+
+        return $menuItem;
     }
 }

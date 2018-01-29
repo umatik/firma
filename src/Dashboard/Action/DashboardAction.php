@@ -8,6 +8,7 @@ use App\Common\Domain\Service\BreadcrumbService;
 use App\Common\Domain\Service\MenuService;
 use App\Common\Domain\Service\SitemapService;
 use App\Dashboard\Responder\DashboardResponder;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class DashboardAction extends BaseAction
@@ -19,15 +20,17 @@ final class DashboardAction extends BaseAction
         DashboardResponder $responder,
         MenuService $menuService,
         SitemapService $sitemapService,
-        BreadcrumbService $breadcrumbService
+        BreadcrumbService $breadcrumbService,
+        Request $request
     ): Response {
-        $breadcumb = $breadcrumbService->render('');
+        $route = $request->get('_route');
+        $siteItem = $sitemapService->getSiteItem($route);
 
         return $responder([
             'menuService' => $menuService,
-            'pageName' => self::PAGE_NAME,
+            'pageName' => $siteItem['name'],
             'pageDescription' => self::PAGE_DESCRIPTION,
-            'breadcrumb' => $breadcumb
+            'breadcrumb' => $breadcrumbService->render('')
         ]);
     }
 }

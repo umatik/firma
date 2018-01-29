@@ -50,13 +50,14 @@ final class GetContractorAction extends BaseAction
             ]);
         }
 
-        $breadcumb = $breadcrumbService->render('app_contractor_get');
+        $route = $request->get('_route');
+        $siteItem = $sitemapService->getSiteItem($route);
 
         return $responder([
             'menuService' => $menuService,
-            'pageName' => self::PAGE_NAME,
+            'pageName' => $siteItem['name'],
             'form' => $form,
-            'breadcrumb' => $breadcumb
+            'breadcrumb' => $breadcrumbService->render($route)
         ]);
     }
 }

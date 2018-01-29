@@ -9,6 +9,7 @@ use App\Common\Domain\Service\MenuService;
 use App\Common\Domain\Service\SitemapService;
 use App\Product\Domain\Model\ProductFactory;
 use App\Product\Responder\ListProductsResponder;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class ListProductsAction extends BaseAction
@@ -20,16 +21,19 @@ final class ListProductsAction extends BaseAction
         MenuService $menuService,
         ProductFactory $productFactory,
         SitemapService $sitemapService,
-        BreadcrumbService $breadcrumbService
+        BreadcrumbService $breadcrumbService,
+        Request $request
     ): Response {
         $products = $productFactory->create()->list();
-        $breadcumb = $breadcrumbService->render('app_product_list');
+
+        $route = $request->get('_route');
+        $siteItem = $sitemapService->getSiteItem($route);
 
         return $responder([
             'menuService' => $menuService,
-            'pageName' => self::PAGE_NAME,
+            'pageName' => $siteItem['name'],
             'products' => $products,
-            'breadcrumb' => $breadcumb
+            'breadcrumb' => $breadcrumbService->render($route)
         ]);
     }
 }

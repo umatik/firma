@@ -9,26 +9,27 @@ use App\Common\Domain\Service\MenuService;
 use App\Common\Domain\Service\SitemapService;
 use App\Contractor\Domain\Model\ContractorFactory;
 use App\Contractor\Responder\ListContractorsResponder;
+use Symfony\Component\HttpFoundation\Request;
 
 final class ListContractorsAction extends BaseAction
 {
-    const PAGE_NAME = 'Kontrahenci';
-
     public function __invoke(
         ListContractorsResponder $responder,
         MenuService $menuService,
         ContractorFactory $contractorFactory,
         SitemapService $sitemapService,
-        BreadcrumbService $breadcrumbService
+        BreadcrumbService $breadcrumbService,
+        Request $request
     ) {
         $contractors = $contractorFactory->create()->list();
-        $breadcumb = $breadcrumbService->render('app_contractor_list');
+        $route = $request->get('_route');
+        $siteItem = $sitemapService->getSiteItem($route);
 
         return $responder([
             'menuService' => $menuService,
-            'pageName' => self::PAGE_NAME,
+            'pageName' => $siteItem['name'],
             'contractors' => $contractors,
-            'breadcrumb' => $breadcumb
+            'breadcrumb' => $breadcrumbService->render($route)
         ]);
     }
 }
