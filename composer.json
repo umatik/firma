@@ -16,13 +16,15 @@
         "symfony/twig-bundle": "^4.0",
         "symfony/validator": "^4.0",
         "symfony/webpack-encore-pack": "^1.0",
-        "symfony/yaml": "^4.0"
+        "symfony/yaml": "^4.0",
+        "twig/extensions": "^1.5"
     },
     "require-dev": {
-        "symfony/dotenv": "^4.0",
-        "symfony/thanks": "^1.0",
-        "symfony/profiler-pack": "^1.0",
+        "squizlabs/php_codesniffer": "*",
         "symfony/debug-pack": "^1.0",
+        "symfony/dotenv": "^4.0",
+        "symfony/profiler-pack": "^1.0",
+        "symfony/thanks": "^1.0",
         "symfony/web-server-bundle": "^4.0"
     },
     "config": {
@@ -57,7 +59,15 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "build": [
+            "@composer install",
+            "npm install",
+            "npm run dev"
+        ],
+        "lint": "vendor/bin/phpcs src/ --standard=PSR2",
+        "test": "vendor/bin/phpunit",
+        "test:coverage": "vendor/bin/phpunit --coverage-html=./coverage"
     },
     "conflict": {
         "symfony/symfony": "*"

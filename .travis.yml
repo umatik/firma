@@ -1,0 +1,31 @@
+language: php
+
+php:
+  - '7.1'
+
+sudo: false
+
+services:
+  - mysql
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+before-install:
+  - composer self-update
+
+install:
+  - composer install
+  - cp .env.travis .env
+# TODO: migracje
+#  - php bin/console doctrine:database:create --env=test
+#  - php bin/console doctrine:schema:create --env=test
+#  - php bin/console doctrine:fixtures:load -n --env=test
+
+script:
+  - composer lint
+  - composer test
+  - bin/console lint:yaml config
+  - bin/console lint:twig templates
+  - bin/console lint:xliff translations
