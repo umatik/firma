@@ -1,0 +1,407 @@
+{% extends 'Common/template.twig' %}
+
+{% block page_name %}{{ pageName }}{% endblock %}
+{% block page_description %}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title">Ogólne</h3>
+                    <div class="box-tools">
+                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Pokaż/ukryj"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label>Faktura</label>
+                                            <select class="form-control" style="width: 100%;">
+                                                <option>VAT</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label>Numer</label>
+                                            <input type="text" class="form-control" value="01/01/2018">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Data sprzedaży</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" class="form-control pull-right" id="datepicker" value="{{ "now"|date('d.m.Y') }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Data wystawienia</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" class="form-control pull-right" id="datepicker" value="{{ "now"|date('d.m.Y') }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Miejsce wystawienia</label>
+                                        <input type="text" class="form-control" value="Gdańsk">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">Nabywca</h3>
+                    <div class="box-tools">
+                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Pokaż/ukryj"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#contractor" data-toggle="tab"
+                                                  aria-expanded="true">Kontrahent</a></li>
+                            <li class=""><a href="#client" data-toggle="tab" aria-expanded="false">Klient</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="contractor">
+                                <div class="form-group">
+                                    <label>Wyszukaj kontrahenta</label>
+                                    <select class="form-control" style="width: 100%;" name="contractors">
+                                        <option></option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Nazwa</label>
+                                    <input type="text" class="form-control" disabled="">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Adres</label>
+                                    <input type="text" class="form-control" disabled="">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Kod pocztowy</label>
+                                            <input type="text" class="form-control" disabled="">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label>Miasto</label>
+                                            <input type="text" class="form-control" disabled="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>NIP</label>
+                                            <input type="text" class="form-control" disabled="">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>REGON</label>
+                                            <input type="text" class="form-control" disabled="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Telefon</label>
+                                    <input type="text" class="form-control" disabled="">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" disabled="">
+                                </div>
+
+                                <p><span class="fa fa-info-circle"> W celu edycji danych przejdź do <a
+                                                href="{{ path('app_contractor_list') }}">danych kontrahenta</a>.</p>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="client">
+                                <div class="form-group">
+                                    <label>Nazwa</label>
+                                    <input type="text" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Adres</label>
+                                    <input type="text" class="form-control">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Kod pocztowy</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label>Miasto</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>NIP</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>REGON</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Telefon</label>
+                                    <input type="text" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">Finanse</h3>
+                    <div class="box-tools">
+                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Pokaż/ukryj"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#payment" data-toggle="tab" aria-expanded="true">Płatność</a></li>
+                            <li class=""><a href="#extra" data-toggle="tab" aria-expanded="false">Dodatkowe</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="payment">
+                                <div class="form-group">
+                                    <label>Sposób zapłaty</label>
+                                    <select class="form-control" style="width: 100%;">
+                                        <option>Przelew</option>
+                                        <option>Gotówka</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Zapłacono</label>
+                                    <input type="text" class="form-control" disabled="">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Termin płatności</label>
+                                    <select class="form-control" style="width: 100%;">
+                                        <option>Zapłacono</option>
+                                        <option>7 dni</option>
+                                        <option>14 dni</option>
+                                        <option>30 dni</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Konto bankowe</label>
+                                    <select class="form-control" style="width: 100%;">
+                                        <option>BANK JAKIŚ - 00 0000 0000 0000 0000 0000 0000</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="extra">
+                                <div class="form-group">
+                                    <label>Wystawił</label>
+                                    <input type="text" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Odebrał</label>
+                                    <input type="text" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Uwagi</label>
+                                    <textarea class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Pozycje</h3>
+                    <div class="box-tools">
+                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Pokaż/ukryj"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Nazwa towaru lub usługi</th>
+                                <th>J.m.</th>
+                                <th>PKWiU</th>
+                                <th>Ilość</th>
+                                <th>Cena</th>
+                                <th style="width: 90px;">Typ ceny</th>
+                                <th>Rabat kwotowy</th>
+                                <th>Rabat procentowy</th>
+                                <th>Wartość netto</th>
+                                <th>Stawka VAT</th>
+                                <th>Kwota VAT</th>
+                                <th>Wartość brutto</th>
+                                <th> </th>
+                            </tr>
+                            <tr>
+                                <td>Testowa usługa</td>
+                                <td>godz.</td>
+                                <td></td>
+                                <td>180</td>
+                                <td>90,00 zł</td>
+                                <td>Netto</td>
+                                <td>0,00 zł</td>
+                                <td>0.00%</td>
+                                <td>16200,00 zł</td>
+                                <td>23%</td>
+                                <td>3726,00 zł</td>
+                                <td>19926,00 zł</td>
+                                <td>
+                                    <span class="label label-danger">usuń</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Nazwa towaru lub usługi">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="J.m.">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="PKWiU">
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" placeholder="Ilość">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Cena">
+                                </td>
+                                <td>
+                                    <select class="form-control">
+                                        <option>Netto</option>
+                                        <option>Brutto</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" class="form-control" placeholder="Rabat kwotowy"></td>
+                                <td><input type="text" class="form-control" placeholder="Rabat procentowy"></td>
+                                <td><input type="text" class="form-control" placeholder="Wartość netto"></td>
+                                <td><input type="text" class="form-control" placeholder="Stawka VAT"></td>
+                                <td><input type="text" class="form-control" placeholder="Kwota VAT"></td>
+                                <td><input type="text" class="form-control" placeholder="Wartość Brutto"></td>
+                                <td>
+                                    <span class="label label-success">zapisz</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <span class="label label-success">dodaj</span>
+                    <p class="pull-right">
+                        Wartość VAT: <span class="text-blue">3726,00 zł</span>
+                        Wartość Netto: <span class="text-blue">16200,00 zł</span>
+                        Wartość Brutto: <span class="text-blue">19926,00 zł</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-left">
+                <button type="button" class="btn btn-default">Podgląd wydruku</button>
+            </div>
+            <div class="pull-right">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-success">Zapisz</button>
+                    <button type="button" class="btn btn-default">Zapisz i wydrukuj</button>
+                    <button type="button" class="btn btn-default">Anuluj</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var contractors = [];
+
+        $.ajax({
+            url: '/ajax/contractor/list',
+            method: 'GET',
+            success: function (response) {
+                contractors = response.data.contractors;
+                $.each(contractors, function () {
+                    $('select[name="contractors"]').append('<option value="'+ this.id +'">'+ this.name +'</option>');
+                })
+            }
+        });
+    </script>
+{% endblock %}

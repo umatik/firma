@@ -25,6 +25,12 @@ final class SitemapService
             'subtree' => [],
         ],
         [
+            'name' => 'Faktury',
+            'path' => 'app_invoice_list',
+            'icon' => 'fa-briefcase',
+            'subtree' => [],
+        ],
+        [
             'name' => 'Raporty',
             'path' => '',
             'icon' => 'fa-database',

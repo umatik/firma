@@ -42,3 +42,18 @@ app_product_delete:
     path: /products/delete/{productId}
     controller: App\Product\Action\DeleteProductAction
     methods: GET
+
+app_invoice_list:
+    path: /invoices/
+    controller: App\Invoice\Action\ListInvoicesAction
+    methods: GET
+
+app_invoice_add:
+    path: /invoices/add
+    controller: App\Invoice\Action\AddInvoiceAction
+    methods: [GET, POST]
+
+ajax_contractor_list:
+    path: /ajax/contractor/list
+    controller: App\Contractor\Action\Ajax\ContractorListAction
+    methods: GET
