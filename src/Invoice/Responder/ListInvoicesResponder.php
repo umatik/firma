@@ -15,6 +15,6 @@ final class ListInvoicesResponder extends BaseResponder
             'pageName' => $data['pageName'],
             'invoices' => $data['invoices'],
             'breadcrumb' => $data['breadcrumb']
-       ]));
+            ]));
     }
 }
