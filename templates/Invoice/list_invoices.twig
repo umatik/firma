@@ -1,0 +1,63 @@
+{% extends 'Common/template.twig' %}
+
+{% block page_name %}{{ pageName }}{% endblock %}
+{% block page_description %}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <a href="{{ path('app_invoice_add') }}" class="btn btn-success btn-sm pull-right">Dodaj nową fakturę</a>
+                </div>
+
+                <div class="box-body table-responsive">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% for message in app.flashes('info') %}
+                                <div class="alert alert-success alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <h4><i class="icon fa fa-check"></i> Sukces!</h4>
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+
+                            <table class="table table-hover">
+                                <tbody>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Numer</th>
+                                    <th>NIP</th>
+                                    <th>Nazwa kontrahenta</th>
+                                    <th>Adres kontrahenta</th>
+                                    <th>Termin zapłaty</th>
+                                    <th>Wartość brutto</th>
+                                    <th>Do zapłaty</th>
+                                    <th>Zapłacono</th>
+                                    <th>Forma płatności</th>
+                                    <th>Z dnia</th>
+                                    <th>Data sprzedaży</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                                {% for invoice in invoices %}
+                                    asdasd
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-footer clearfix">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                        <li><a href="#">«</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">»</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
