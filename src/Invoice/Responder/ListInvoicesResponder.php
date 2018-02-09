@@ -13,7 +13,8 @@ final class ListInvoicesResponder extends BaseResponder
         return new Response($this->twig->render('Invoice/list_invoices.twig', [
             'menu' => $data['menuService']->render(),
             'pageName' => $data['pageName'],
-            'invoices' => $data['invoices']
-        ]));
+            'invoices' => $data['invoices'],
+            'breadcrumb' => $data['breadcrumb']
+       ]));
     }
 }

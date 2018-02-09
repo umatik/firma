@@ -62,6 +62,30 @@ final class SitemapService
             'isMenuItem' => false,
             'subtree' => [],
         ],
+        'invoice_list' => [
+            'name' => 'Faktury',
+            'path' => 'app_invoice_list',
+            'icon' => 'fa-briefcase',
+            'isMenuItem' => true,
+            'parent' => '',
+            'subtree' => [],
+        ],
+        'invoice_add' => [
+            'name' => 'Nowa faktura',
+            'path' => 'app_invoice_add',
+            'icon' => '',
+            'isMenuItem' => false,
+            'parent' => 'invoice_list',
+            'subtree' => [],
+        ],
+        'invoice_get' => [
+            'name' => 'Dane faktury',
+            'path' => 'app_invoice_get',
+            'icon' => '',
+            'isMenuItem' => false,
+            'parent' => 'invoice_list',
+            'subtree' => [],
+        ],
         'raport' => [
             'name' => 'Raporty',
             'path' => '',
@@ -71,13 +95,13 @@ final class SitemapService
             'subtree' => [
                 [
                     'name' => 'JPK',
-                    'path' => 'app_raport_b',
+                    'path' => '',
                     'icon' => 'a',
                     'parent' => 'raport',
                 ],
                 [
                     'name' => 'ALAMAKOTA',
-                    'path' => 'app_raport_a',
+                    'path' => '',
                     'icon' => '',
                     'parent' => 'raport',
                 ]

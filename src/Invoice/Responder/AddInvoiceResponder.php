@@ -13,6 +13,7 @@ final class AddInvoiceResponder extends BaseResponder
         return new Response($this->twig->render('Invoice/add_invoice.twig', [
             'menu' => $data['menuService']->render(),
             'pageName' => $data['pageName'],
+            'breadcrumb' => $data['breadcrumb']
         ]));
     }
 }
