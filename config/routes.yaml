@@ -43,12 +43,17 @@ app_product_delete:
     controller: App\Product\Action\DeleteProductAction
     methods: GET
 
-app_raport_a:
-    path: /raport_A/
-    controller: App\Raport\Action\RaportAction
+app_invoice_list:
+    path: /invoices/
+    controller: App\Invoice\Action\ListInvoicesAction
     methods: GET
 
-app_raport_b:
-    path: /raport_B/
-    controller: App\Raport\Action\RaportBAction
+app_invoice_add:
+    path: /invoices/add
+    controller: App\Invoice\Action\AddInvoiceAction
+    methods: [GET, POST]
+
+ajax_contractor_list:
+    path: /ajax/contractor/list
+    controller: App\Contractor\Action\Ajax\ContractorListAction
     methods: GET
